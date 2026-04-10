@@ -109,13 +109,16 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 .bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto 1fr auto auto auto;
+  grid-template-rows: auto 1fr repeat(6, auto);
   grid-template-areas:
     "photo   hero    connect"
     "photo   hero    about"
     "career  career  edu"
-    "seline  awaz    craft"
-    "royalty royalty royalty";
+    "seline  seline  seline"
+    "awaz    awaz    awaz"
+    "craft   craft   craft"
+    "royalty royalty royalty"
+    "locker  locker  locker";
   gap: var(--gap);
 }
 
@@ -550,6 +553,14 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
   flex-direction: column;
 }
 
+/* ── Locker Zero Card ── */
+
+.card-locker-zero {
+  grid-area: locker;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ── Education Card ── */
 
 .card-edu {
@@ -687,8 +698,11 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "photo   hero"
       "connect about"
       "career  career"
-      "seline  awaz"
-      "craft   royalty"
+      "seline  seline"
+      "awaz    awaz"
+      "craft   craft"
+      "royalty royalty"
+      "locker  locker"
       "edu     edu";
   }
 
@@ -709,6 +723,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "awaz"
       "craft"
       "royalty"
+      "locker"
       "edu";
   }
 

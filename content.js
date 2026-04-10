@@ -90,6 +90,14 @@ window.PORTFOLIO_DATA = {
       description:
         "Toronto's premier renovation studio — full-service luxury renovations across the GTA covering kitchens, bathrooms, and full-home transformations.",
       link: "https://royalty-home-inc-steel.vercel.app/"
+    },
+    {
+      title: "Locker Zero",
+      type: "Website",
+      status: "In Progress",
+      description:
+        "Custom jewelry consulting for those who demand perfection. Trusted by NFL athletes and elite clientele for over a decade.",
+      link: null
     }
   ],
 
