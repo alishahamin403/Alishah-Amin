@@ -596,8 +596,12 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
   width: 38px;
   height: 38px;
   border-radius: 9px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--line);
   flex-shrink: 0;
+}
+
+[data-theme="light"] .project-icon {
+  border-color: rgba(0, 0, 0, 0.28);
 }
 
 .project-name {
