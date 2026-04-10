@@ -139,25 +139,6 @@
     if (royaltyEl && royalty) royaltyEl.textContent  = royalty.description;
   }
 
-  /* ── Skills ── */
-  function renderSkills() {
-    var container = qs("#skills-grid");
-    if (!container) return;
-
-    container.innerHTML = (data.skills || []).map(function (group) {
-      var tags = group.items.map(function (item) {
-        return '<span class="skill-tag">' + esc(item) + "</span>";
-      }).join("");
-
-      return (
-        '<div class="skill-group">' +
-          '<p class="skill-category">' + esc(group.category) + "</p>" +
-          '<div class="skill-tags">' + tags + "</div>" +
-        "</div>"
-      );
-    }).join("");
-  }
-
   /* ── Year ── */
   function setYear() {
     var el = qs("#current-year");
@@ -188,7 +169,6 @@
   renderEducation();
   renderCertifications();
   renderProjects();
-  renderSkills();
   setYear();
   initTheme();
 })();

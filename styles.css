@@ -115,7 +115,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
     "photo   hero    about"
     "career  career  edu"
     "seline  awaz    craft"
-    "royalty skills  skills";
+    "royalty royalty royalty";
   gap: var(--gap);
 }
 
@@ -570,51 +570,6 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 
 .edu-row { /* reuses .career-row styles via JS — kept for specificity */ }
 
-/* ── Skills Card ── */
-
-.card-skills {
-  grid-area: skills;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.skill-group { display: flex; flex-direction: column; gap: 0.5rem; }
-
-.skill-category {
-  margin: 0;
-  font-size: 0.63rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--green);
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.skill-tag {
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--ink-soft);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  padding: 0.25rem 0.55rem;
-  transition: border-color 150ms, color 150ms;
-}
-
-.skill-tag:hover {
-  border-color: var(--green-border);
-  color: var(--green-bright);
-}
-
 /* ── Shared Project Parts ── */
 
 .project-brand {
@@ -734,12 +689,10 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "career  career"
       "seline  awaz"
       "craft   royalty"
-      "edu     edu"
-      "skills  skills";
+      "edu     edu";
   }
 
   .card-photo { min-height: 200px; }
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
@@ -756,11 +709,9 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "awaz"
       "craft"
       "royalty"
-      "edu"
-      "skills";
+      "edu";
   }
 
   .card-photo { min-height: 280px; }
   .hero-name { font-size: 2.2rem; }
-  .skills-grid { grid-template-columns: 1fr 1fr; }
 }
