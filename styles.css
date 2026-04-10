@@ -448,7 +448,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 .seline-showcase {
   flex: 0 0 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   gap: 0.9rem;
   aspect-ratio: 16 / 9;
@@ -468,7 +468,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 
 .iphone-xl {
   aspect-ratio: 1206 / 2622;
-  height: 100%;
+  height: calc(100% - 4px);
   width: auto;
 }
 
