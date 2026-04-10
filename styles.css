@@ -244,9 +244,9 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
   background: var(--card);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 220px;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .hero-name {
