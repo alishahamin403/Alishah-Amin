@@ -146,10 +146,10 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 }
 
 .bento-eyebrow {
-  margin: 0 0 0.6rem;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  margin: 0 0 1rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--green);
 }
