@@ -123,17 +123,20 @@
   function renderProjects() {
     var projects = data.sideProjects || [];
 
-    var seline = projects.find(function (p) { return p.title === "Seline"; });
-    var awaz   = projects.find(function (p) { return p.title === "Awaz"; });
-    var craft  = projects.find(function (p) { return p.title === "Craft"; });
+    var seline  = projects.find(function (p) { return p.title === "Seline"; });
+    var awaz    = projects.find(function (p) { return p.title === "Awaz"; });
+    var craft   = projects.find(function (p) { return p.title === "Craft"; });
+    var royalty = projects.find(function (p) { return p.title === "Royalty Home Inc."; });
 
-    var selineEl = qs("#seline-desc");
-    var awazEl   = qs("#awaz-desc");
-    var craftEl  = qs("#craft-desc");
+    var selineEl  = qs("#seline-desc");
+    var awazEl    = qs("#awaz-desc");
+    var craftEl   = qs("#craft-desc");
+    var royaltyEl = qs("#royalty-desc");
 
-    if (selineEl && seline) selineEl.textContent = seline.description;
-    if (awazEl   && awaz)   awazEl.textContent   = awaz.description;
-    if (craftEl  && craft)  craftEl.textContent  = craft.description;
+    if (selineEl  && seline)  selineEl.textContent  = seline.description;
+    if (awazEl    && awaz)    awazEl.textContent     = awaz.description;
+    if (craftEl   && craft)   craftEl.textContent    = craft.description;
+    if (royaltyEl && royalty) royaltyEl.textContent  = royalty.description;
   }
 
   /* ── Skills ── */

@@ -115,7 +115,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
     "photo   hero    about"
     "career  career  edu"
     "seline  awaz    craft"
-    "skills  skills  skills";
+    "royalty skills  skills";
   gap: var(--gap);
 }
 
@@ -542,6 +542,14 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 }
 
 
+/* ── Royalty Card ── */
+
+.card-royalty {
+  grid-area: royalty;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ── Education Card ── */
 
 .card-edu {
@@ -725,7 +733,8 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "connect about"
       "career  career"
       "seline  awaz"
-      "craft   edu"
+      "craft   royalty"
+      "edu     edu"
       "skills  skills";
   }
 
@@ -746,6 +755,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "seline"
       "awaz"
       "craft"
+      "royalty"
       "edu"
       "skills";
   }

@@ -82,6 +82,14 @@ window.PORTFOLIO_DATA = {
       description:
         "Image-to-video conversion tool. Transforms static images into dynamic video content using modern AI models.",
       link: null
+    },
+    {
+      title: "Royalty Home Inc.",
+      type: "Website",
+      status: "Active",
+      description:
+        "Toronto's premier renovation studio — full-service luxury renovations across the GTA covering kitchens, bathrooms, and full-home transformations.",
+      link: "https://royalty-home-inc-steel.vercel.app/"
     }
   ],
 
