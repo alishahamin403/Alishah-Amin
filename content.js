@@ -81,7 +81,7 @@ window.PORTFOLIO_DATA = {
       status: "In Progress",
       description:
         "Image-to-video conversion tool. Transforms static images into dynamic video content using modern AI models.",
-      link: null
+      link: "https://craft-swart-six.vercel.app/"
     },
     {
       title: "Royalty Home Inc.",
