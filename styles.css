@@ -468,7 +468,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 
 .iphone-xl {
   aspect-ratio: 1206 / 2622;
-  height: calc(100% - 4px);
+  height: calc(100% - 16px);
   width: auto;
 }
 
