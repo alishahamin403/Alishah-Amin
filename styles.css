@@ -420,6 +420,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  gap: 0.9rem;
   aspect-ratio: 1600 / 829;
   overflow: hidden;
   padding-top: 1.5rem;
@@ -436,7 +437,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 }
 
 .iphone-xl {
-  width: 148px;
+  width: min(148px, calc((100% - 0.9rem) / 2));
 }
 
 .iphone-notch {
