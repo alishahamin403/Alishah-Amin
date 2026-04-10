@@ -416,10 +416,11 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 }
 
 .seline-showcase {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  aspect-ratio: 1600 / 829;
   overflow: hidden;
   padding-top: 1.5rem;
   background: linear-gradient(180deg, rgba(92,148,96,0.07) 0%, transparent 60%);
