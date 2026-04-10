@@ -1,0 +1,7 @@
+<svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M66 60C84 51.4737 102 47 120 47C138 47 156 51.4737 174 60" stroke="#A8843F" stroke-width="5.4" stroke-linecap="round"/>
+  <path d="M72.5 69V102.5C85.7632 96.1579 101.035 93 120 93C138.965 93 154.237 96.1579 167.5 102.5V69" stroke="#1F1A17" stroke-width="6.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 52.5V101" stroke="#1F1A17" stroke-width="3.8" stroke-linecap="round"/>
+  <path d="M60 127H180" stroke="#7D7167" stroke-width="2.8"/>
+  <text x="228" y="112" fill="#1F1A17" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="82" letter-spacing="6">Awaz</text>
+</svg>

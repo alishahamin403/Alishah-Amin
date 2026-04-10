@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mockup 2 - Glassline Modern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f171f;
+      --slate: #283644;
+      --sky: #dbe6f2;
+      --cloud: #f5f9fd;
+      --line: rgba(15, 23, 31, 0.16);
+      --card: rgba(255, 255, 255, 0.6);
+      --steel: #7e8da0;
+      --accent: #1f5a8f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Outfit", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(56rem 56rem at 105% -10%, rgba(56, 115, 183, 0.26), transparent 60%),
+        radial-gradient(40rem 40rem at -5% 90%, rgba(115, 141, 174, 0.2), transparent 55%),
+        linear-gradient(165deg, #edf3f9, #d8e4f0 58%, #f6f9fc);
+      display: grid;
+      place-items: center;
+      padding: 34px 22px;
+    }
+
+    .shell {
+      width: min(1180px, 100%);
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(130deg, rgba(255,255,255,0.72), rgba(255,255,255,0.45));
+      backdrop-filter: blur(9px);
+      box-shadow: 0 28px 55px rgba(17, 32, 49, 0.2);
+      padding: 28px;
+      overflow: hidden;
+      position: relative;
+      animation: riseIn 0.7s ease both;
+    }
+
+    .shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.32), transparent 28% 72%, rgba(255,255,255,0.22));
+      pointer-events: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .identity {
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--slate);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .identity i {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #ffffff, #d7e4f0);
+      border: 1px solid var(--line);
+      font-style: normal;
+      font-family: "Syne", sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .menu span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      color: #354657;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--card);
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: clamp(38px, 5vw, 66px);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      color: #334859;
+      max-width: 54ch;
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .feature {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,0.65);
+      min-height: 100px;
+    }
+
+    .feature small {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--steel);
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #1f2f3f;
+    }
+
+    .mono {
+      display: grid;
+      place-items: center;
+      gap: 16px;
+      min-height: 100%;
+    }
+
+    .mono-box {
+      width: min(290px, 72vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      border: 1px solid rgba(16, 30, 44, 0.24);
+      background:
+        linear-gradient(160deg, rgba(255,255,255,0.92), rgba(209,225,240,0.72)),
+        repeating-linear-gradient(145deg, rgba(59, 91, 129, 0.08) 0 7px, rgba(255,255,255,0) 7px 15px);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 22px 35px rgba(35, 56, 83, 0.24);
+    }
+
+    .mono-box span {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(88px, 16vw, 138px);
+      line-height: 1;
+      color: #132437;
+      letter-spacing: -0.02em;
+      text-shadow: 0 6px 16px rgba(29,53,82,0.2);
+    }
+
+    .status {
+      border: 1px solid rgba(31, 90, 143, 0.4);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      background: rgba(220, 235, 248, 0.8);
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .shell { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="identity"><i>AA</i> Ali Shah Amin</div>
+      <nav class="menu">
+        <span>Blogs</span>
+        <span>Projects</span>
+        <span>Experience</span>
+        <span>Education</span>
+      </nav>
+    </header>
+
+    <section class="layout">
+      <article class="panel">
+        <h1>Modern Portfolio.<br/>Professional Clarity.</h1>
+        <p class="subtitle">A sleek home for your essays, selected case studies, career timeline, and academic credentials in one elegant, high-credibility presentation.</p>
+        <div class="grid">
+          <div class="feature">
+            <small>01 Writing Archive</small>
+            <p>Long-form blog essays organized by themes and chronology.</p>
+          </div>
+          <div class="feature">
+            <small>02 Featured Work</small>
+            <p>Project highlights with outcomes, screenshots, and stack details.</p>
+          </div>
+          <div class="feature">
+            <small>03 Career Path</small>
+            <p>Professional timeline with role scope, growth, and impact.</p>
+          </div>
+          <div class="feature">
+            <small>04 Education</small>
+            <p>Degrees, certifications, and milestones that shaped your expertise.</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="panel mono">
+        <div class="mono-box"><span>AA</span></div>
+        <div class="status">Ali Shah Amin</div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mockup 3 - Contemporary Art Deco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f7f5f2;
+      --smoke: #e3dfd9;
+      --ink: #161513;
+      --soft: #575249;
+      --olive: #707b62;
+      --bronze: #9c7453;
+      --panel: rgba(255, 255, 255, 0.66);
+      --line: rgba(22, 21, 19, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Archivo", sans-serif;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(58rem 58rem at 0% 0%, rgba(156,116,83,0.22), transparent 62%),
+        radial-gradient(45rem 45rem at 105% 90%, rgba(112,123,98,0.2), transparent 58%),
+        linear-gradient(170deg, var(--cream), #efebe6 45%, #f8f6f4);
+      display: grid;
+      place-items: center;
+      padding: 36px 20px;
+    }
+
+    .board {
+      width: min(1200px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.44));
+      box-shadow: 0 26px 64px rgba(28, 24, 18, 0.18);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      animation: reveal 0.75s ease both;
+    }
+
+    .board::before {
+      content: "";
+      position: absolute;
+      right: -110px;
+      top: -90px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      border: 1px solid rgba(156, 116, 83, 0.24);
+    }
+
+    .board::after {
+      content: "";
+      position: absolute;
+      left: -150px;
+      bottom: -150px;
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      border: 1px solid rgba(112, 123, 98, 0.24);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .name {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--soft);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .links span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 13px;
+      background: rgba(255,255,255,0.72);
+      font-size: 12px;
+      color: #595146;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      align-items: stretch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .left,
+    .right {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+    }
+
+    .left {
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      min-height: 440px;
+    }
+
+    .badge {
+      width: min(310px, 72vw);
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      border: 1px solid rgba(22, 21, 19, 0.2);
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(155deg, rgba(255,255,255,0.86), rgba(227,223,217,0.72)),
+        repeating-linear-gradient(90deg, rgba(156,116,83,0.08) 0 4px, rgba(255,255,255,0) 4px 16px);
+      box-shadow: inset 0 0 24px rgba(255,255,255,0.34), 0 20px 36px rgba(50, 38, 24, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge::before,
+    .badge::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(22, 21, 19, 0.14);
+      border-radius: 18px;
+      inset: 12px;
+    }
+
+    .badge::after {
+      inset: 22px;
+    }
+
+    .badge span {
+      font-family: "Fraunces", serif;
+      font-size: clamp(84px, 15vw, 132px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1f1b16;
+      z-index: 1;
+    }
+
+    .right {
+      padding: 30px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 440px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 0.93;
+    }
+
+    .desc {
+      margin: 16px 0 0;
+      color: var(--soft);
+      max-width: 50ch;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .strips {
+      margin-top: 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .strip {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: rgba(255,255,255,0.78);
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .strip b {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--bronze);
+    }
+
+    .strip p {
+      margin: 0;
+      color: #403a32;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6c655c;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sig {
+      border: 1px solid rgba(112, 123, 98, 0.36);
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: #53604a;
+      background: rgba(229, 236, 223, 0.74);
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .right { padding: 22px; min-height: auto; }
+      .left { min-height: auto; }
+      .strip { grid-template-columns: 1fr; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="board">
+    <header class="nav">
+      <div class="name">Ali Shah Amin</div>
+      <div class="links">
+        <span>Blogs</span>
+        <span>Projects</span>
+        <span>Career</span>
+        <span>Education</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <aside class="left">
+        <div class="badge"><span>AA</span></div>
+      </aside>
+
+      <article class="right">
+        <div>
+          <h1>Elegant Personal Space<br/>for Ideas and Impact.</h1>
+          <p class="desc">A polished landing page concept that balances storytelling with professional presence, showcasing writing, portfolio projects, experience, and education in one coherent narrative.</p>
+        </div>
+
+        <div class="strips">
+          <div class="strip"><b>Blog Collection</b><p>Document your thinking, lessons, and perspectives in readable long-form posts.</p></div>
+          <div class="strip"><b>Project Showcase</b><p>Highlight key builds with concise context, outcomes, and technical breakdowns.</p></div>
+          <div class="strip"><b>Career + Academics</b><p>Present your roles, milestones, degrees, and credentials with clarity.</p></div>
+        </div>
+
+        <div class="footer">
+          <span>Contemporary Art Deco Direction</span>
+          <span class="sig">Ali Shah Amin</span>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="22" fill="#F5F0E8"/>
+  <!-- book spine arc -->
+  <path d="M30 38C42 31.6 54 28 60 28C66 28 78 31.6 90 38" stroke="#A8843F" stroke-width="4" stroke-linecap="round"/>
+  <!-- book pages left -->
+  <path d="M33 44V70C41 66.5 50.5 64.5 60 64.5C69.5 64.5 79 66.5 87 70V44" stroke="#1F1A17" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- spine line -->
+  <path d="M60 30V64" stroke="#1F1A17" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- base line -->
+  <path d="M27 82H93" stroke="#7D7167" stroke-width="2.2"/>
+</svg>

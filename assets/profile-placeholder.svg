@@ -1,0 +1,18 @@
+<svg width="900" height="1125" viewBox="0 0 900 1125" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="114" y1="93" x2="799" y2="1017" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6EFE7"/>
+      <stop offset="1" stop-color="#DDD1C2"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="188" y1="214" x2="724" y2="915" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A97E5A"/>
+      <stop offset="1" stop-color="#6E7A62"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1125" fill="url(#bg)"/>
+  <rect x="70" y="70" width="760" height="985" rx="46" fill="none" stroke="url(#ring)" stroke-opacity="0.45" stroke-width="2"/>
+  <circle cx="450" cy="438" r="208" fill="#F9F5F0" stroke="#947253" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="450" y="485" text-anchor="middle" fill="#2A241E" font-family="'Times New Roman', serif" font-size="186" font-weight="700" letter-spacing="-4">AA</text>
+  <text x="450" y="732" text-anchor="middle" fill="#4D463E" font-family="Arial, sans-serif" font-size="26" letter-spacing="5">ALI SHAH AMIN</text>
+  <text x="450" y="780" text-anchor="middle" fill="#6D655C" font-family="Arial, sans-serif" font-size="20" letter-spacing="2">Add profile photo as assets/profile.jpg</text>
+</svg>
