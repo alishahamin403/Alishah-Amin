@@ -437,7 +437,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 }
 
 .iphone-xl {
-  width: min(124px, calc((100% - 0.9rem) / 2), calc(23.8% - 7px));
+  width: min(118px, calc((100% - 0.9rem) / 2), calc(23.8% - 13px));
 }
 
 .iphone-notch {
