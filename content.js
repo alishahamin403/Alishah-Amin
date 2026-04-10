@@ -62,7 +62,7 @@ window.PORTFOLIO_DATA = {
     {
       title: "Seline",
       type: "iOS App",
-      status: "Coming Soon",
+      status: "In Progress",
       description:
         "Productivity and life management with an LLM at its core. Manages emails, calendar, visits, receipts, journaling, and notes — all in one place.",
       link: null
