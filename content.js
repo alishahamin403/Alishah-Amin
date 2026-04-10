@@ -97,7 +97,7 @@ window.PORTFOLIO_DATA = {
       status: "In Progress",
       description:
         "Custom jewelry consulting for those who demand perfection. Trusted by NFL athletes and elite clientele for over a decade.",
-      link: null
+      link: "https://locker-zero.vercel.app/"
     }
   ],
 
