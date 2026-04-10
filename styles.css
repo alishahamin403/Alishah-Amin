@@ -190,6 +190,7 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 
 .card-photo {
   grid-area: photo;
+  position: relative;
   padding: 0;
   overflow: hidden;
   border-radius: var(--radius);
@@ -205,6 +206,35 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
   object-fit: cover;
   object-position: center 8%;
   display: block;
+}
+
+.photo-github-link {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  transition: background 150ms, color 150ms, transform 150ms;
+}
+
+.photo-github-link:hover {
+  background: #111;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.photo-github-link svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* ── Hero Card ── */
