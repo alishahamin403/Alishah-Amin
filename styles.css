@@ -108,17 +108,15 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
 
 .bento {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto 1fr repeat(6, auto);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto 1fr repeat(4, auto);
   grid-template-areas:
-    "photo   hero    connect"
-    "photo   hero    about"
-    "career  career  edu"
-    "seline  seline  seline"
-    "awaz    awaz    awaz"
-    "craft   craft   craft"
-    "royalty royalty royalty"
-    "locker  locker  locker";
+    "photo   photo   hero    hero    connect connect"
+    "photo   photo   hero    hero    about   about"
+    "career  career  career  career  edu     edu"
+    "seline  seline  seline  awaz    awaz    awaz"
+    "craft   craft   craft   royalty royalty royalty"
+    "locker  locker  locker  .       .       .";
   gap: var(--gap);
 }
 
@@ -698,11 +696,9 @@ a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-r
       "photo   hero"
       "connect about"
       "career  career"
-      "seline  seline"
-      "awaz    awaz"
-      "craft   craft"
-      "royalty royalty"
-      "locker  locker"
+      "seline  awaz"
+      "craft   royalty"
+      "locker  ."
       "edu     edu";
   }
 
