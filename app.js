@@ -69,6 +69,7 @@
             '<span class="career-role">' + esc(e.role) + "</span>" +
             '<span class="career-company">' + esc(e.company) + "</span>" +
             '<span class="career-period">' + esc(e.period) + "</span>" +
+            (e.description ? '<p class="career-desc">' + esc(e.description) + "</p>" : "") +
           "</div>" +
         "</div>"
       );

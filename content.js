@@ -106,19 +106,25 @@ window.PORTFOLIO_DATA = {
       role: "Senior Product Manager",
       company: "RBC Borealis",
       period: "Oct 2025 — Present",
-      logo: "https://www.google.com/s2/favicons?domain=rbcborealis.com&sz=64"
+      logo: "https://www.google.com/s2/favicons?domain=rbcborealis.com&sz=64",
+      description:
+        "Leading the Data Hubs product team across strategy, go-to-market, feature enhancement, and user experience. Data Hubs creates user-ready data assets using medallion architecture across both on-prem and cloud environments."
     },
     {
       role: "Manager, Delivery & Strategy",
       company: "RBC",
       period: "Oct 2022 — Oct 2025",
-      logo: "https://www.google.com/s2/favicons?domain=rbc.com&sz=64"
+      logo: "https://www.google.com/s2/favicons?domain=rbc.com&sz=64",
+      description:
+        "Led strategy and delivery for two product teams within the Advanced Analytics program in Personal Banking. Built an end-to-end delivery framework that connected OKRs to individual resource tasks."
     },
     {
       role: "Product Manager, Digital Marketing & Sales",
       company: "RBC",
       period: "Oct 2021 — Oct 2022",
-      logo: "https://www.google.com/s2/favicons?domain=rbc.com&sz=64"
+      logo: "https://www.google.com/s2/favicons?domain=rbc.com&sz=64",
+      description:
+        "Developed data strategy and go-to-market planning for the OnePATH data product team and DevOps initiatives within RBC Personal Banking's Advanced Analytics program."
     },
     {
       role: "Product Analyst",
