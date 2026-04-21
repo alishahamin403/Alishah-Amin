@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "mcp__Claude_Preview__preview_start",
-      "Bash(cp \"/Users/alishahamin/Desktop/Vibecode/Seline/Seline/Assets.xcassets/SelineLogo.imageset/seline-logo-light@2x.png\" \"/Users/alishahamin/Desktop/Vibecode/Personal Website/assets/seline-logo.png\")",
-      "Bash(cp \"/Users/alishahamin/Desktop/Vibecode/Seline/Seline/Assets.xcassets/AppIcon.appiconset/icon-light-180.png\" \"/Users/alishahamin/Desktop/Vibecode/Personal Website/assets/seline-icon.png\")"
-    ]
-  }
-}
