@@ -12,9 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=28" />
+  <link rel="stylesheet" href="styles.css?v=29" />
   <script src="content.js?v=4" defer></script>
-  <script src="app.js?v=3" defer></script>
+  <script src="app.js?v=4" defer></script>
   <!-- Vercel Web Analytics -->
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
@@ -52,7 +52,7 @@
       <article class="bento-card card-connect">
         <p class="bento-label">Contact</p>
         <div class="connect-links">
-          <a id="connect-booking" class="booking-cta" href="https://calendar.app.google/cWuoHbffiUtKMDxv8" target="_blank" rel="noopener noreferrer" aria-label="Book a 1 on 1 with Ali Shah Amin">
+          <a id="connect-booking" class="booking-cta" href="https://calendar.app.google/cWuoHbffiUtKMDxv8" target="_blank" rel="noopener noreferrer" aria-label="Show 1 on 1 booking calendar" aria-expanded="false" aria-controls="booking-panel">
             <span class="booking-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
                 <path d="M4 6.5C4 5.67 4.67 5 5.5 5H10c1.1 0 2 .9 2 2v12c0-1.1-.9-2-2-2H5.5A1.5 1.5 0 0 1 4 15.5v-9Z" />
@@ -66,8 +66,7 @@
             </span>
             <span class="booking-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M7 17 17 7" />
-                <path d="M9 7h8v8" />
+                <path d="m6 9 6 6 6-6" />
               </svg>
             </span>
           </a>
@@ -79,6 +78,26 @@
               <span class="connect-icon">in</span> LinkedIn
             </a>
           </div>
+        </div>
+      </article>
+
+      <!-- ② Booking -->
+      <article id="booking-panel" class="bento-card card-booking" hidden>
+        <div class="booking-panel-copy">
+          <p class="bento-label">1:1 Booking</p>
+          <h2 class="booking-panel-title">Find a time on my calendar.</h2>
+          <p class="booking-panel-text">Choose an available slot below. Google Calendar will send the invite and add it to my calendar automatically.</p>
+          <a class="booking-panel-link" href="https://calendar.app.google/cWuoHbffiUtKMDxv8" target="_blank" rel="noopener noreferrer">Open full booking page</a>
+        </div>
+        <div class="booking-frame-shell">
+          <iframe
+            id="booking-frame"
+            class="booking-frame"
+            title="Ali Shah Amin 1 on 1 booking calendar"
+            data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-QIwyBIS52Nqy0kehODS5hDRlxoUhP0y8zCEO8WM0-6vCNgL0VvGItx1afUyUkqWRAIdTCf5L?gv=true"
+            loading="eager"
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
         </div>
       </article>
 

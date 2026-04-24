@@ -167,6 +167,49 @@
     });
   }
 
+  function initBookingPanel() {
+    var trigger = qs("#connect-booking");
+    var panel = qs("#booking-panel");
+    var frame = qs("#booking-frame");
+    var grid = qs(".bento");
+    if (!trigger || !panel || !grid) return;
+
+    function setBookingPanel(open, shouldScroll) {
+      trigger.setAttribute("aria-expanded", String(open));
+      trigger.classList.toggle("booking-cta--open", open);
+      grid.classList.toggle("bento--booking-open", open);
+      panel.hidden = !open;
+
+      if (open && frame && !frame.src && frame.dataset.src) {
+        frame.src = frame.dataset.src;
+      }
+
+      if (open && shouldScroll && panel.scrollIntoView) {
+        window.setTimeout(function () {
+          panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        }, 0);
+      }
+    }
+
+    trigger.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      var isOpen = trigger.getAttribute("aria-expanded") === "true";
+      var nextOpen = !isOpen;
+
+      setBookingPanel(nextOpen, true);
+
+      if (window.history && window.history.replaceState) {
+        var nextUrl = nextOpen ? "#book" : window.location.pathname + window.location.search;
+        window.history.replaceState(null, "", nextUrl);
+      }
+    });
+
+    if (window.location.hash === "#book") {
+      setBookingPanel(true, true);
+    }
+  }
+
   renderNav();
   renderHero();
   renderCareer();
@@ -175,4 +218,5 @@
   renderProjects();
   setYear();
   initTheme();
+  initBookingPanel();
 })();
