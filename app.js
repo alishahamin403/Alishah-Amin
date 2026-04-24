@@ -171,8 +171,11 @@
     var trigger = qs("#connect-booking");
     var panel = qs("#booking-panel");
     var frame = qs("#booking-frame");
+    var frameShell = qs(".booking-frame-shell");
+    var loading = qs("#booking-loading");
     var grid = qs(".bento");
     if (!trigger || !panel || !grid) return;
+    var fallbackTimer;
 
     function setBookingPanel(open, shouldScroll) {
       trigger.setAttribute("aria-expanded", String(open));
@@ -180,15 +183,34 @@
       grid.classList.toggle("bento--booking-open", open);
       panel.hidden = !open;
 
-      if (open && frame && !frame.src && frame.dataset.src) {
+      if (!open) {
+        window.clearTimeout(fallbackTimer);
+        return;
+      }
+
+      if (frame && !frame.src && frame.dataset.src) {
         frame.src = frame.dataset.src;
       }
 
-      if (open && shouldScroll && panel.scrollIntoView) {
+      if (open && frameShell && !frameShell.classList.contains("is-loaded") && loading) {
+        window.clearTimeout(fallbackTimer);
+        fallbackTimer = window.setTimeout(function () {
+          loading.classList.add("booking-frame-loading--fallback");
+        }, 4000);
+      }
+
+      if (shouldScroll && panel.scrollIntoView) {
         window.setTimeout(function () {
-          panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          panel.scrollIntoView({ block: "start", behavior: "smooth" });
         }, 0);
       }
+    }
+
+    if (frame && frameShell) {
+      frame.addEventListener("load", function () {
+        window.clearTimeout(fallbackTimer);
+        frameShell.classList.add("is-loaded");
+      });
     }
 
     trigger.addEventListener("click", function (event) {

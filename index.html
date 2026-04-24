@@ -12,9 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="styles.css?v=30" />
   <script src="content.js?v=4" defer></script>
-  <script src="app.js?v=4" defer></script>
+  <script src="app.js?v=5" defer></script>
   <!-- Vercel Web Analytics -->
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
@@ -52,7 +52,7 @@
       <article class="bento-card card-connect">
         <p class="bento-label">Contact</p>
         <div class="connect-links">
-          <a id="connect-booking" class="booking-cta" href="https://calendar.app.google/cWuoHbffiUtKMDxv8" target="_blank" rel="noopener noreferrer" aria-label="Show 1 on 1 booking calendar" aria-expanded="false" aria-controls="booking-panel">
+          <button id="connect-booking" class="booking-cta" type="button" aria-label="Show 1 on 1 booking calendar" aria-expanded="false" aria-controls="booking-panel">
             <span class="booking-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
                 <path d="M4 6.5C4 5.67 4.67 5 5.5 5H10c1.1 0 2 .9 2 2v12c0-1.1-.9-2-2-2H5.5A1.5 1.5 0 0 1 4 15.5v-9Z" />
@@ -69,7 +69,7 @@
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </span>
-          </a>
+          </button>
           <div class="connect-secondary">
             <a id="connect-email" class="connect-btn" href="mailto:alishah.amin96@gmail.com">
               <span class="connect-icon">✉</span> Email me
@@ -90,6 +90,11 @@
           <a class="booking-panel-link" href="https://calendar.app.google/cWuoHbffiUtKMDxv8" target="_blank" rel="noopener noreferrer">Open full booking page</a>
         </div>
         <div class="booking-frame-shell">
+          <div id="booking-loading" class="booking-frame-loading">
+            <span class="booking-loading-title">Loading calendar...</span>
+            <span class="booking-loading-text">Available times will appear here. If it stays blank, open the full booking page.</span>
+            <a class="booking-loading-link" href="https://calendar.app.google/cWuoHbffiUtKMDxv8" target="_blank" rel="noopener noreferrer">Open booking page</a>
+          </div>
           <iframe
             id="booking-frame"
             class="booking-frame"
