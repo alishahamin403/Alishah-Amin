@@ -130,19 +130,25 @@ window.PORTFOLIO_DATA = {
       role: "Product Analyst",
       company: "WSIB",
       period: "Jun 2019 — Oct 2021",
-      logo: "https://www.google.com/s2/favicons?domain=wsib.ca&sz=64"
+      logo: "https://www.google.com/s2/favicons?domain=wsib.ca&sz=64",
+      description:
+        "Worked on WSIB's internal Health Services app, centralizing insurance policies and service information so users could find trusted answers in-app instead of searching externally."
     },
     {
       role: "Business Analyst",
       company: "Innovapost",
       period: "Dec 2018 — May 2019",
-      logo: "https://www.google.com/s2/favicons?domain=innovapost.com&sz=64"
+      logo: "https://www.google.com/s2/favicons?domain=innovapost.com&sz=64",
+      description:
+        "Gathered requirements for the Disability Accommodation Program and partnered with the product team to implement the feature on the Canada Post website."
     },
     {
       role: "IT Business Analyst (Internship)",
       company: "WSIB",
       period: "May 2018 — Aug 2018",
-      logo: "https://www.google.com/s2/favicons?domain=wsib.ca&sz=64"
+      logo: "https://www.google.com/s2/favicons?domain=wsib.ca&sz=64",
+      description:
+        "Supported the SharePoint Sites product team, helping build internal SharePoint sites for business teams across WSIB."
     }
   ]
 };
