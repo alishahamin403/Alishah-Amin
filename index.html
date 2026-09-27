@@ -12,9 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=30" />
-  <script src="content.js?v=4" defer></script>
-  <script src="app.js?v=5" defer></script>
+  <link rel="stylesheet" href="styles.css?v=32" />
+  <script src="content.js?v=5" defer></script>
+  <script src="app.js?v=7" defer></script>
   <!-- Vercel Web Analytics -->
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
@@ -132,132 +132,209 @@
       </article>
 
       <!-- ⑤ Seline -->
-      <a class="bento-card card-seline project-card-link" href="https://seline-website-three.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Seline website">
-        <div class="seline-showcase">
-          <div class="iphone-frame iphone-xl">
-            <div class="iphone-notch"></div>
-            <img class="iphone-screen theme-dark-only"  src="assets/seline-menu-dark.png"  alt="Seline navigation menu screen" />
-            <img class="iphone-screen theme-light-only" src="assets/seline-menu-light.png" alt="Seline navigation menu screen" />
+      <article class="bento-card card-seline project-card">
+        <a class="project-card-main" href="https://seline-website-three.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Seline website">
+          <div class="seline-showcase">
+            <div class="iphone-frame iphone-xl">
+              <div class="iphone-notch"></div>
+              <img class="iphone-screen theme-dark-only"  src="assets/seline-menu-dark.png"  alt="Seline navigation menu screen" />
+              <img class="iphone-screen theme-light-only" src="assets/seline-menu-light.png" alt="Seline navigation menu screen" />
+            </div>
+            <div class="iphone-frame iphone-xl">
+              <div class="iphone-notch"></div>
+              <img class="iphone-screen theme-dark-only"  src="assets/seline-home-dark.png"  alt="Seline app home screen" />
+              <img class="iphone-screen theme-light-only" src="assets/seline-home-light.png" alt="Seline app home screen" />
+            </div>
+            <div class="iphone-frame iphone-xl">
+              <div class="iphone-notch"></div>
+              <img class="iphone-screen theme-dark-only"  src="assets/seline-chat-dark.png"  alt="Seline chat screen" />
+              <img class="iphone-screen theme-light-only" src="assets/seline-chat-light.png" alt="Seline chat screen" />
+            </div>
           </div>
-          <div class="iphone-frame iphone-xl">
-            <div class="iphone-notch"></div>
-            <img class="iphone-screen theme-dark-only"  src="assets/seline-home-dark.png"  alt="Seline app home screen" />
-            <img class="iphone-screen theme-light-only" src="assets/seline-home-light.png" alt="Seline app home screen" />
+          <div class="seline-footer">
+            <div class="seline-footer-top">
+              <img src="assets/seline-icon.png" alt="Seline" class="project-icon" />
+              <div>
+                <h3 class="project-name">Seline</h3>
+                <div class="badge-row">
+                  <span class="badge badge-progress">In Progress</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-desc" id="seline-desc"></p>
           </div>
-          <div class="iphone-frame iphone-xl">
-            <div class="iphone-notch"></div>
-            <img class="iphone-screen theme-dark-only"  src="assets/seline-chat-dark.png"  alt="Seline chat screen" />
-            <img class="iphone-screen theme-light-only" src="assets/seline-chat-light.png" alt="Seline chat screen" />
+        </a>
+        <button class="project-case-button" type="button" data-case-study="Seline" aria-label="View Seline case study">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5.5h8.5a3.5 3.5 0 0 1 3.5 3.5v9.5H8.5A3.5 3.5 0 0 1 5 15V5.5Z" />
+            <path d="M9 9h4" />
+            <path d="M9 12h5" />
+          </svg>
+        </button>
+      </article>
+
+      <!-- ⑥ Awaz -->
+      <article class="bento-card card-awaz project-card">
+        <a class="project-card-main" href="https://awaz-drab.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Awaz website">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <span class="browser-url">awaz-drab.vercel.app</span>
+            </div>
+            <img class="browser-screen theme-dark-only" src="assets/awaz-dark-screenshot.png" alt="Awaz website" />
+            <img class="browser-screen theme-light-only" src="assets/awaz-screenshot.png" alt="Awaz website" />
           </div>
-        </div>
-        <div class="seline-footer">
-          <div class="seline-footer-top">
-            <img src="assets/seline-icon.png" alt="Seline" class="project-icon" />
+          <div class="project-brand" style="margin-top:0.8rem;">
+            <img src="assets/awaz-icon.svg" alt="Awaz" class="project-icon" />
             <div>
-              <h3 class="project-name">Seline</h3>
+              <h3 class="project-name">Awaz</h3>
+              <div class="badge-row">
+                <span class="badge badge-active">Active</span>
+              </div>
+            </div>
+          </div>
+          <p class="project-desc" id="awaz-desc"></p>
+        </a>
+        <button class="project-case-button" type="button" data-case-study="Awaz" aria-label="View Awaz case study">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5.5h8.5a3.5 3.5 0 0 1 3.5 3.5v9.5H8.5A3.5 3.5 0 0 1 5 15V5.5Z" />
+            <path d="M9 9h4" />
+            <path d="M9 12h5" />
+          </svg>
+        </button>
+      </article>
+
+      <!-- ⑦ Craft -->
+      <article class="bento-card card-craft project-card">
+        <a class="project-card-main" href="https://craft-swart-six.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Craft website">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <span class="browser-url">craft-swart-six.vercel.app</span>
+            </div>
+            <img class="browser-screen theme-dark-only" src="assets/craft-dark-screenshot.png" alt="Craft website" />
+            <img class="browser-screen theme-light-only" src="assets/craft-screenshot.png" alt="Craft website" />
+          </div>
+          <div class="project-brand" style="margin-top:0.8rem;">
+            <svg class="project-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:transparent;border:none;">
+              <rect x="0" y="0" width="26.2" height="26.2" rx="6.1" fill="#e05252" fill-opacity="0.18" stroke="#e05252" stroke-width="2.1" stroke-opacity="0.55"/>
+              <rect x="5.9" y="5.9" width="26.2" height="26.2" rx="6.1" fill="#e05252" fill-opacity="0.5"/>
+              <rect x="11.8" y="11.8" width="26.2" height="26.2" rx="6.1" fill="#e05252"/>
+              <path d="M22.7,20.8 L22.7,29.0 L29.8,24.9 Z" fill="white"/>
+            </svg>
+            <div>
+              <h3 class="project-name">Craft</h3>
               <div class="badge-row">
                 <span class="badge badge-progress">In Progress</span>
               </div>
             </div>
           </div>
-          <p class="project-desc" id="seline-desc"></p>
-        </div>
-      </a>
-
-      <!-- ⑥ Awaz -->
-      <a class="bento-card card-awaz project-card-link" href="https://awaz-drab.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Awaz website">
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="browser-url">awaz-drab.vercel.app</span>
-          </div>
-          <img class="browser-screen theme-dark-only" src="assets/awaz-dark-screenshot.png" alt="Awaz website" />
-          <img class="browser-screen theme-light-only" src="assets/awaz-screenshot.png" alt="Awaz website" />
-        </div>
-        <div class="project-brand" style="margin-top:0.8rem;">
-          <img src="assets/awaz-icon.svg" alt="Awaz" class="project-icon" />
-          <div>
-            <h3 class="project-name">Awaz</h3>
-            <div class="badge-row">
-              <span class="badge badge-active">Active</span>
-            </div>
-          </div>
-        </div>
-        <p class="project-desc" id="awaz-desc"></p>
-      </a>
-
-      <!-- ⑦ Craft -->
-      <a class="bento-card card-craft project-card-link" href="https://craft-swart-six.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Craft website">
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="browser-url">craft-swart-six.vercel.app</span>
-          </div>
-          <img class="browser-screen theme-dark-only" src="assets/craft-dark-screenshot.png" alt="Craft website" />
-          <img class="browser-screen theme-light-only" src="assets/craft-screenshot.png" alt="Craft website" />
-        </div>
-        <div class="project-brand" style="margin-top:0.8rem;">
-          <svg class="project-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:transparent;border:none;">
-            <rect x="0" y="0" width="26.2" height="26.2" rx="6.1" fill="#e05252" fill-opacity="0.18" stroke="#e05252" stroke-width="2.1" stroke-opacity="0.55"/>
-            <rect x="5.9" y="5.9" width="26.2" height="26.2" rx="6.1" fill="#e05252" fill-opacity="0.5"/>
-            <rect x="11.8" y="11.8" width="26.2" height="26.2" rx="6.1" fill="#e05252"/>
-            <path d="M22.7,20.8 L22.7,29.0 L29.8,24.9 Z" fill="white"/>
+          <p class="project-desc" id="craft-desc"></p>
+        </a>
+        <button class="project-case-button" type="button" data-case-study="Craft" aria-label="View Craft case study">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5.5h8.5a3.5 3.5 0 0 1 3.5 3.5v9.5H8.5A3.5 3.5 0 0 1 5 15V5.5Z" />
+            <path d="M9 9h4" />
+            <path d="M9 12h5" />
           </svg>
-          <div>
-            <h3 class="project-name">Craft</h3>
-            <div class="badge-row">
-              <span class="badge badge-progress">In Progress</span>
-            </div>
-          </div>
-        </div>
-        <p class="project-desc" id="craft-desc"></p>
-      </a>
+        </button>
+      </article>
 
       <!-- ⑧ Royalty Home Inc. -->
-      <a class="bento-card card-royalty project-card-link" href="https://royalty-home-inc-steel.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Royalty Home Inc. website">
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="browser-url">royalty-home-inc-steel.vercel.app</span>
+      <article class="bento-card card-royalty project-card">
+        <a class="project-card-main" href="https://royalty-home-inc-steel.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Royalty Home Inc. website">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <span class="browser-url">royalty-home-inc-steel.vercel.app</span>
+            </div>
+            <img class="browser-screen" src="assets/royalty-screenshot.png" alt="Royalty Home Inc. website" />
           </div>
-          <img class="browser-screen" src="assets/royalty-screenshot.png" alt="Royalty Home Inc. website" />
-        </div>
-        <div class="project-brand" style="margin-top:0.8rem;">
-          <img src="assets/royalty-logo.png" alt="Royalty Home Inc." class="project-icon" style="background:#fff;padding:3px;" />
-          <div>
-            <h3 class="project-name">Royalty Home Inc.</h3>
-            <div class="badge-row">
-              <span class="badge badge-progress">In Progress</span>
+          <div class="project-brand" style="margin-top:0.8rem;">
+            <img src="assets/royalty-logo.png" alt="Royalty Home Inc." class="project-icon" style="background:#fff;padding:3px;" />
+            <div>
+              <h3 class="project-name">Royalty Home Inc.</h3>
+              <div class="badge-row">
+                <span class="badge badge-progress">In Progress</span>
+              </div>
             </div>
           </div>
-        </div>
-        <p class="project-desc" id="royalty-desc"></p>
-      </a>
+          <p class="project-desc" id="royalty-desc"></p>
+        </a>
+        <button class="project-case-button" type="button" data-case-study="Royalty Home Inc." aria-label="View Royalty Home Inc. case study">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5.5h8.5a3.5 3.5 0 0 1 3.5 3.5v9.5H8.5A3.5 3.5 0 0 1 5 15V5.5Z" />
+            <path d="M9 9h4" />
+            <path d="M9 12h5" />
+          </svg>
+        </button>
+      </article>
 
       <!-- ⑨ Locker Zero -->
-      <a class="bento-card card-locker-zero project-card-link" href="https://locker-zero.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Locker Zero website">
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="browser-url">locker-zero.vercel.app</span>
+      <article class="bento-card card-locker-zero project-card">
+        <a class="project-card-main" href="https://locker-zero.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Locker Zero website">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <span class="browser-url">locker-zero.vercel.app</span>
+            </div>
+            <img class="browser-screen theme-dark-only" src="assets/locker-zero-dark-screenshot.png" alt="Locker Zero website template" />
+            <img class="browser-screen theme-light-only" src="assets/locker-zero-screenshot.png" alt="Locker Zero website template" />
           </div>
-          <img class="browser-screen theme-dark-only" src="assets/locker-zero-dark-screenshot.png" alt="Locker Zero website template" />
-          <img class="browser-screen theme-light-only" src="assets/locker-zero-screenshot.png" alt="Locker Zero website template" />
-        </div>
-        <div class="project-brand" style="margin-top:0.8rem;">
-          <img src="assets/locker-zero-logo.svg" alt="Locker Zero" class="project-icon" />
-          <div>
-            <h3 class="project-name">Locker Zero</h3>
-            <div class="badge-row">
-              <span class="badge badge-progress">In Progress</span>
+          <div class="project-brand" style="margin-top:0.8rem;">
+            <img src="assets/locker-zero-logo.svg" alt="Locker Zero" class="project-icon" />
+            <div>
+              <h3 class="project-name">Locker Zero</h3>
+              <div class="badge-row">
+                <span class="badge badge-progress">In Progress</span>
+              </div>
             </div>
           </div>
-        </div>
-        <p class="project-desc" id="locker-zero-desc"></p>
-      </a>
+          <p class="project-desc" id="locker-zero-desc"></p>
+        </a>
+        <button class="project-case-button" type="button" data-case-study="Locker Zero" aria-label="View Locker Zero case study">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5.5h8.5a3.5 3.5 0 0 1 3.5 3.5v9.5H8.5A3.5 3.5 0 0 1 5 15V5.5Z" />
+            <path d="M9 9h4" />
+            <path d="M9 12h5" />
+          </svg>
+        </button>
+      </article>
 
     </div>
   </main>
+
+  <div id="case-study-modal" class="case-modal" hidden>
+    <div class="case-modal-backdrop" data-case-modal-close></div>
+    <section class="case-modal-panel" role="dialog" aria-modal="true" aria-labelledby="case-modal-title">
+      <button class="case-modal-close" type="button" data-case-modal-close aria-label="Close case study">×</button>
+      <p id="case-modal-kicker" class="case-modal-kicker"></p>
+      <h2 id="case-modal-title" class="case-modal-title"></h2>
+      <p id="case-modal-focus" class="case-modal-focus"></p>
+      <dl class="case-modal-details">
+        <div>
+          <dt>Role</dt>
+          <dd id="case-modal-role"></dd>
+        </div>
+        <div>
+          <dt>Tech Stack</dt>
+          <dd id="case-modal-stack"></dd>
+        </div>
+        <div>
+          <dt>Problem</dt>
+          <dd id="case-modal-problem"></dd>
+        </div>
+        <div>
+          <dt>Build</dt>
+          <dd id="case-modal-build"></dd>
+        </div>
+        <div>
+          <dt>Outcome</dt>
+          <dd id="case-modal-outcome"></dd>
+        </div>
+      </dl>
+    </section>
+  </div>
 
   <footer class="site-footer">
     <p>© <span id="current-year"></span> Ali Shah Amin</p>

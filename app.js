@@ -232,6 +232,75 @@
     }
   }
 
+  function initCaseStudyModal() {
+    var modal = qs("#case-study-modal");
+    if (!modal) return;
+
+    var previousFocus = null;
+    var studies = data.caseStudies || [];
+    var fields = {
+      kicker: qs("#case-modal-kicker"),
+      title: qs("#case-modal-title"),
+      focus: qs("#case-modal-focus"),
+      role: qs("#case-modal-role"),
+      stack: qs("#case-modal-stack"),
+      problem: qs("#case-modal-problem"),
+      build: qs("#case-modal-build"),
+      outcome: qs("#case-modal-outcome")
+    };
+
+    function setText(el, value) {
+      if (el) el.textContent = value || "";
+    }
+
+    function getStudy(title) {
+      return studies.find(function (study) { return study.title === title; });
+    }
+
+    function openModal(study, trigger) {
+      if (!study) return;
+      previousFocus = trigger || document.activeElement;
+
+      setText(fields.kicker, "Case Study");
+      setText(fields.title, study.title);
+      setText(fields.focus, study.focus);
+      setText(fields.role, study.role);
+      setText(fields.stack, study.stack);
+      setText(fields.problem, study.problem);
+      setText(fields.build, study.build);
+      setText(fields.outcome, study.outcome);
+
+      modal.hidden = false;
+      document.body.classList.add("modal-open");
+
+      var closeButton = modal.querySelector(".case-modal-close");
+      if (closeButton) closeButton.focus();
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.classList.remove("modal-open");
+      if (previousFocus && previousFocus.focus) previousFocus.focus();
+    }
+
+    document.querySelectorAll("[data-case-study]").forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        openModal(getStudy(button.getAttribute("data-case-study")), button);
+      });
+    });
+
+    modal.querySelectorAll("[data-case-modal-close]").forEach(function (control) {
+      control.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (modal.hidden) return;
+      if (event.key === "Escape") closeModal();
+    });
+  }
+
   renderNav();
   renderHero();
   renderCareer();
@@ -241,4 +310,5 @@
   setYear();
   initTheme();
   initBookingPanel();
+  initCaseStudyModal();
 })();

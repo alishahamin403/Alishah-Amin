@@ -101,6 +101,69 @@ window.PORTFOLIO_DATA = {
     }
   ],
 
+  caseStudies: [
+    {
+      title: "Seline",
+      focus: "AI life-management app",
+      role: "Product strategy, UX direction, app concept",
+      stack: "SwiftUI, Supabase, LLM workflows, Google integrations",
+      problem:
+        "Personal productivity is scattered across email, calendar, spending, receipts, notes, and daily planning. The goal is to bring those routines into one assistant-led mobile experience.",
+      build:
+        "Designed an iOS-first experience around home, chat, navigation, and task surfaces, with an LLM at the core for asking questions, surfacing context, and helping users act on daily information.",
+      outcome:
+        "In-progress product prototype with a clear mobile interaction model and visual direction."
+    },
+    {
+      title: "Awaz",
+      focus: "Religious text study platform",
+      role: "Product concept, web experience, content structure",
+      stack: "Next.js, Vercel, responsive UI system, structured content architecture",
+      problem:
+        "Readers exploring scripture often move between disconnected sources and search results, making it harder to compare context across traditions.",
+      build:
+        "Built a calm study environment for the Quran, Torah, Bible, and Bhagavad Gita with reader, library, and question-led exploration paths.",
+      outcome:
+        "Active web product focused on accessible study and structured discovery."
+    },
+    {
+      title: "Craft",
+      focus: "AI image-to-video tool",
+      role: "Product strategy, interface direction, workflow design",
+      stack: "Next.js, Vercel, AI generation workflows, media upload pipeline",
+      problem:
+        "Creators need a faster way to turn static images into short cinematic videos without managing complex editing tools or model workflows.",
+      build:
+        "Shaped a web product around upload, creation, and library flows, with a clear hero message and visual before-to-after storytelling.",
+      outcome:
+        "In-progress AI creation tool positioned around fast, high-quality video generation."
+    },
+    {
+      title: "Royalty Home Inc.",
+      focus: "Luxury renovation website",
+      role: "Website strategy, brand presentation, conversion flow",
+      stack: "Next.js, Vercel, responsive web design, brand-led marketing UI",
+      problem:
+        "A renovation studio needs to signal trust, premium quality, and service coverage quickly while guiding potential clients toward inquiry.",
+      build:
+        "Created a polished web presence with luxury renovation positioning, project imagery, service framing, and clear calls to action.",
+      outcome:
+        "In-progress service website for GTA renovation leads and brand credibility."
+    },
+    {
+      title: "Locker Zero",
+      focus: "Custom jewelry consulting website",
+      role: "Brand positioning, landing experience, visual direction",
+      stack: "Next.js, Vercel, custom brand system, luxury landing page design",
+      problem:
+        "High-end jewelry consulting depends on trust, scarcity, taste, and credibility. The website needs to feel premium without overexplaining.",
+      build:
+        "Built a refined landing experience around custom jewelry consulting, NFL athlete trust signals, elite clientele, and consultation-led conversion.",
+      outcome:
+        "In-progress premium website with light and dark presentation for a luxury consulting brand."
+    }
+  ],
+
   career: [
     {
       role: "Senior Product Manager",
