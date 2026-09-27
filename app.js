@@ -2,10 +2,12 @@
   var data = window.PORTFOLIO_DATA;
   if (!data) return;
 
-  function qs(id) { return document.querySelector(id); }
+  var id = data.identity || {};
+
+  function $(sel, root) { return (root || document).querySelector(sel); }
 
   function esc(v) {
-    return String(v)
+    return String(v == null ? "" : v)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
@@ -13,302 +15,344 @@
       .replace(/'/g, "&#39;");
   }
 
-  function isExt(href) { return /^https?:\/\//i.test(href || ""); }
+  function pad(n) { return String(n).padStart(2, "0"); }
 
-  /* ── Header / Nav ── */
-  function renderNav() {
-    var id = data.identity || {};
-    var initials = qs("#top-initials");
-    var email = qs("#nav-email");
-    var linkedin = qs("#nav-linkedin");
-    var connectEmail = qs("#connect-email");
-    var connectLinkedin = qs("#connect-linkedin");
-
-    if (initials) initials.textContent = id.initials || "ASA";
-    if (email && id.email) email.href = "mailto:" + id.email;
-    if (linkedin && id.linkedin) linkedin.href = id.linkedin;
-    if (connectEmail && id.email) connectEmail.href = "mailto:" + id.email;
-    if (connectLinkedin && id.linkedin) connectLinkedin.href = id.linkedin;
+  function chips(list) {
+    return (list || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
   }
 
-  /* ── Hero ── */
+  var ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+
+  var SERVICE_ICONS = [
+    // phone
+    '<svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg>',
+    // browser
+    '<svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="3"/><path d="M2.5 8.5h19M6 6.3h.01M8.5 6.3h.01"/></svg>',
+    // database
+    '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6.5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V5.5"/><path d="M4.5 12v6.5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V12"/></svg>',
+    // sparkle
+    '<svg viewBox="0 0 24 24"><path d="M12 3c.6 4.4 2.6 6.4 7 7-4.4.6-6.4 2.6-7 7-.6-4.4-2.6-6.4-7-7 4.4-.6 6.4-2.6 7-7Z"/><path d="M19 15.5c.3 1.9 1.1 2.7 3 3-1.9.3-2.7 1.1-3 3-.3-1.9-1.1-2.7-3-3 1.9-.3 2.7-1.1 3-3Z"/></svg>'
+  ];
+
+  /* ── Hero bits ── */
   function renderHero() {
-    var id = data.identity || {};
-    var name = qs("#hero-name");
-    var title = qs("#hero-title");
-    var bio = qs("#hero-bio");
-    var tags = qs("#hero-tags");
-    var status = qs("#connect-status");
+    var avail = $("#availability-text");
+    if (avail && id.availability) avail.textContent = id.availability;
 
-    if (name) name.textContent = id.fullName || "Ali Shah Amin";
-    if (title) title.textContent = id.title || "";
-    if (bio) bio.textContent = id.bio || "";
-    if (status) status.textContent = id.status || "Open to opportunities";
-
-    if (tags) {
-      var skillItems = (data.skills || []).flatMap(function (g) { return g.items.slice(0, 1); });
-      tags.innerHTML = skillItems.map(function (t) {
-        return '<span class="hero-tag">' + esc(t) + "</span>";
+    var stats = $("#stats");
+    if (stats) {
+      stats.innerHTML = (data.stats || []).map(function (s) {
+        return '<div class="stat"><dt>' + esc(s.value) + "</dt><dd>" + esc(s.label) + "</dd></div>";
       }).join("");
+    }
+
+    var marquee = $("#marquee");
+    if (marquee) {
+      var items = (data.stack || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
+      // Two copies so the loop is seamless; the second is hidden from screen readers.
+      marquee.innerHTML = '<div style="display:flex">' + items + '</div><div style="display:flex" aria-hidden="true">' + items + "</div>";
     }
   }
 
-  /* ── Career ── */
-  function renderCareer() {
-    var container = qs("#career-list");
-    if (!container) return;
+  /* ── Work ── */
+  function projectCard(p, index) {
+    var num = pad(index + 1);
+    var building = !/live/i.test(p.status || "");
+    var icon = p.icon ? '<img class="project-icon" src="' + esc(p.icon) + '" alt="" width="34" height="34" loading="lazy" />' : "";
 
-    container.innerHTML = (data.career || []).map(function (e) {
-      var logoHtml = e.logo
-        ? '<img class="org-logo" src="' + esc(e.logo) + '" alt="' + esc(e.company) + '" onerror="this.style.display=\'none\'" />'
-        : '<div class="org-logo org-logo-placeholder"></div>';
-      return (
-        '<div class="career-row">' +
-          logoHtml +
-          '<div class="career-info">' +
-            '<span class="career-role">' + esc(e.role) + "</span>" +
-            '<span class="career-company">' + esc(e.company) + "</span>" +
-            '<span class="career-period">' + esc(e.period) + "</span>" +
-            (e.description ? '<p class="career-desc">' + esc(e.description) + "</p>" : "") +
+    var media;
+    if (p.phones) {
+      media =
+        '<a class="project-media phones" href="' + esc(p.link) + '" target="_blank" rel="noopener noreferrer" aria-label="Visit the ' + esc(p.title) + ' website">' +
+          p.phones.map(function (name) {
+            return (
+              '<div class="phone">' +
+                '<img class="theme-light-img" src="assets/img/' + name + '-light.webp" alt="" width="540" height="1174" loading="lazy" />' +
+                '<img class="theme-dark-img" src="assets/img/' + name + '-dark.webp" alt="" width="540" height="1174" loading="lazy" />' +
+              "</div>"
+            );
+          }).join("") +
+        "</a>";
+    } else {
+      var shots = p.shots || {};
+      var imgs = shots.light === shots.dark
+        ? '<img src="' + esc(shots.light) + '" alt="Screenshot of ' + esc(p.title) + '" width="1440" height="900" loading="lazy" />'
+        : '<img class="theme-light-img" src="' + esc(shots.light) + '" alt="Screenshot of ' + esc(p.title) + '" width="1440" height="900" loading="lazy" />' +
+          '<img class="theme-dark-img" src="' + esc(shots.dark) + '" alt="Screenshot of ' + esc(p.title) + '" width="1440" height="900" loading="lazy" />';
+      media =
+        '<a class="project-media browser" href="' + esc(p.link) + '" target="_blank" rel="noopener noreferrer" aria-label="Visit ' + esc(p.title) + '">' +
+          '<div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><span class="browser-url">' + esc(p.linkLabel) + "</span></div>" +
+          '<div class="browser-view">' + imgs + "</div>" +
+        "</a>";
+    }
+
+    return (
+      '<article class="project scroll-reveal' + (p.featured ? " project--featured" : "") + '">' +
+        media +
+        '<div class="project-body">' +
+          '<div class="project-meta mono">' +
+            '<span class="project-num">' + num + "</span>" +
+            "<span>" + esc(p.kind) + "</span>" +
+            '<span class="status' + (building ? " status--building" : "") + '">' + esc(p.status) + "</span>" +
           "</div>" +
-        "</div>"
+          '<div class="project-title-row">' + icon + '<h3 class="project-title">' + esc(p.title) + "</h3></div>" +
+          '<p class="project-tagline">' + esc(p.tagline) + "</p>" +
+          '<p class="project-desc">' + esc(p.description) + "</p>" +
+          '<ul class="chips" aria-label="Tech stack">' + chips(p.stack) + "</ul>" +
+          '<div class="project-actions">' +
+            '<a class="link-btn link-btn--primary" href="' + esc(p.link) + '" target="_blank" rel="noopener noreferrer">Visit ' + ARROW + "</a>" +
+            '<button class="link-btn" type="button" data-case="' + esc(p.id) + '">Case study</button>' +
+          "</div>" +
+        "</div>" +
+      "</article>"
+    );
+  }
+
+  function renderWork() {
+    var el = $("#work-list");
+    if (el) el.innerHTML = (data.projects || []).map(projectCard).join("");
+  }
+
+  /* ── Services / process ── */
+  function renderServices() {
+    var el = $("#services-list");
+    if (!el) return;
+    el.innerHTML = (data.services || []).map(function (s, i) {
+      return (
+        '<article class="service scroll-reveal">' +
+          '<span class="service-icon" aria-hidden="true">' + (SERVICE_ICONS[i] || "") + "</span>" +
+          '<p class="mono service-num">' + pad(i + 1) + "</p>" +
+          '<h3 class="service-title">' + esc(s.title) + "</h3>" +
+          '<p class="service-summary">' + esc(s.summary) + "</p>" +
+          "<ul>" + (s.items || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
+        "</article>"
       );
     }).join("");
   }
 
-  /* ── Education ── */
-  function renderEducation() {
-    var container = qs("#edu-list");
-    if (!container) return;
-
-    container.innerHTML = (data.education || []).map(function (e) {
-      var logoHtml = e.logo
-        ? '<img class="org-logo" src="' + esc(e.logo) + '" alt="' + esc(e.school) + '" onerror="this.style.display=\'none\'" />'
-        : '<div class="org-logo org-logo-placeholder"></div>';
-      return (
-        '<div class="career-row">' +
-          logoHtml +
-          '<div class="career-info">' +
-            '<span class="career-role">' + esc(e.degree) + "</span>" +
-            '<span class="career-company">' + esc(e.school) + "</span>" +
-            '<span class="career-period">' + esc(e.period) + "</span>" +
-          "</div>" +
-        "</div>"
-      );
+  function renderProcess() {
+    var el = $("#process-list");
+    if (!el) return;
+    el.innerHTML = (data.process || []).map(function (s) {
+      return '<li class="step scroll-reveal"><h3>' + esc(s.title) + "</h3><p>" + esc(s.text) + "</p></li>";
     }).join("");
   }
 
-  /* ── Certifications ── */
-  function renderCertifications() {
-    var container = qs("#cert-list");
-    if (!container) return;
+  /* ── About ── */
+  function renderAbout() {
+    var career = $("#career-list");
+    if (career) {
+      career.innerHTML = (data.career || []).map(function (r) {
+        return (
+          '<li class="role scroll-reveal">' +
+            '<span class="mono role-period">' + esc(r.period) + "</span>" +
+            "<div><h3>" + esc(r.role) + '</h3><span class="role-company">' + esc(r.company) + "</span>" +
+            (r.description ? "<p>" + esc(r.description) + "</p>" : "") + "</div>" +
+          "</li>"
+        );
+      }).join("");
+    }
 
-    container.innerHTML = (data.certifications || []).map(function (c) {
-      var logoHtml = c.logo
-        ? '<img class="org-logo" src="' + esc(c.logo) + '" alt="' + esc(c.issuer) + '" onerror="this.style.display=\'none\'" />'
-        : '<div class="org-logo org-logo-placeholder"></div>';
-      return (
-        '<div class="career-row">' +
-          logoHtml +
-          '<div class="career-info">' +
-            '<span class="career-role">' + esc(c.name) + "</span>" +
-            '<span class="career-company">' + esc(c.issuer) + "</span>" +
-            '<span class="career-period">' + esc(c.issued) + "</span>" +
-          "</div>" +
-        "</div>"
-      );
-    }).join("");
+    var creds = $("#credentials");
+    if (creds) {
+      creds.innerHTML = (data.credentials || []).map(function (c) {
+        return '<div class="credential"><strong>' + esc(c.name) + "</strong><span>" + esc(c.issuer) + " · " + esc(c.year) + "</span></div>";
+      }).join("");
+    }
+
+    var off = $("#off-duty");
+    if (off) off.innerHTML = (data.offDuty || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
   }
 
-  /* ── Projects ── */
-  function renderProjects() {
-    var projects = data.sideProjects || [];
+  /* ── Contact ── */
+  function renderContact() {
+    var email = $("#contact-email");
+    if (email && id.email) {
+      email.href = "mailto:" + id.email;
+      email.textContent = id.email;
+    }
+    var fallback = $("#booking-fallback");
+    if (fallback && id.booking) fallback.href = id.booking;
 
-    var seline  = projects.find(function (p) { return p.title === "Seline"; });
-    var awaz    = projects.find(function (p) { return p.title === "Awaz"; });
-    var craft   = projects.find(function (p) { return p.title === "Craft"; });
-    var royalty = projects.find(function (p) { return p.title === "Royalty Home Inc."; });
-    var lockerZero = projects.find(function (p) { return p.title === "Locker Zero"; });
+    var links = [
+      id.upwork && { label: "Upwork", href: id.upwork },
+      id.linkedin && { label: "LinkedIn", href: id.linkedin },
+      id.github && { label: "GitHub", href: id.github },
+      id.booking && { label: "Booking page", href: id.booking }
+    ].filter(Boolean);
 
-    var selineEl  = qs("#seline-desc");
-    var awazEl    = qs("#awaz-desc");
-    var craftEl   = qs("#craft-desc");
-    var royaltyEl = qs("#royalty-desc");
-    var lockerZeroEl = qs("#locker-zero-desc");
+    var socials = $("#socials");
+    if (socials) {
+      socials.innerHTML = links.map(function (l) {
+        return '<li><a href="' + esc(l.href) + '" target="_blank" rel="noopener noreferrer">' + esc(l.label) + " " + ARROW + "</a></li>";
+      }).join("");
+    }
 
-    if (selineEl  && seline)  selineEl.textContent  = seline.description;
-    if (awazEl    && awaz)    awazEl.textContent     = awaz.description;
-    if (craftEl   && craft)   craftEl.textContent    = craft.description;
-    if (royaltyEl && royalty) royaltyEl.textContent  = royalty.description;
-    if (lockerZeroEl && lockerZero) lockerZeroEl.textContent = lockerZero.description;
+    var year = $("#year");
+    if (year) year.textContent = String(new Date().getFullYear());
   }
 
-  /* ── Year ── */
-  function setYear() {
-    var el = qs("#current-year");
-    if (el) el.textContent = String(new Date().getFullYear());
+  /* ── Local time ── */
+  function initClock() {
+    var el = $("#local-time");
+    if (!el) return;
+    var fmt;
+    try {
+      fmt = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: id.timezone || "America/Toronto" });
+    } catch (e) { return; }
+    function tick() { el.textContent = fmt.format(new Date()); }
+    tick();
+    setInterval(tick, 30000);
   }
 
-  /* ── Theme Toggle ── */
+  /* ── Theme ── */
+  function currentTheme() {
+    var set = document.documentElement.getAttribute("data-theme");
+    if (set) return set;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
   function initTheme() {
-    var btn = qs("#theme-toggle");
+    var btn = $("#theme-toggle");
     if (!btn) return;
-    var saved = localStorage.getItem("theme");
-    if (saved === "light") document.documentElement.setAttribute("data-theme", "light");
-    btn.addEventListener("click", function () {
-      var current = document.documentElement.getAttribute("data-theme");
-      if (current === "light") {
-        document.documentElement.removeAttribute("data-theme");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.setAttribute("data-theme", "light");
-        localStorage.setItem("theme", "light");
-      }
-    });
-  }
 
-  function initBookingPanel() {
-    var trigger = qs("#connect-booking");
-    var panel = qs("#booking-panel");
-    var frame = qs("#booking-frame");
-    var frameShell = qs(".booking-frame-shell");
-    var loading = qs("#booking-loading");
-    var grid = qs(".bento");
-    if (!trigger || !panel || !grid) return;
-    var fallbackTimer;
+    function apply(next) {
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    }
 
-    function setBookingPanel(open, shouldScroll) {
-      trigger.setAttribute("aria-expanded", String(open));
-      trigger.classList.toggle("booking-cta--open", open);
-      grid.classList.toggle("bento--booking-open", open);
-      panel.hidden = !open;
+    btn.addEventListener("click", function (event) {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (!open) {
-        window.clearTimeout(fallbackTimer);
+      if (!document.startViewTransition || reduce) {
+        apply(next);
         return;
       }
 
-      if (frame && !frame.src && frame.dataset.src) {
-        frame.src = frame.dataset.src;
-      }
+      var rect = btn.getBoundingClientRect();
+      var x = rect.left + rect.width / 2;
+      var y = rect.top + rect.height / 2;
+      var r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      var root = document.documentElement.style;
+      root.setProperty("--vt-x", x + "px");
+      root.setProperty("--vt-y", y + "px");
+      root.setProperty("--vt-r", r + "px");
+      document.startViewTransition(function () { apply(next); });
+    });
+  }
 
-      if (open && frameShell && !frameShell.classList.contains("is-loaded") && loading) {
-        window.clearTimeout(fallbackTimer);
-        fallbackTimer = window.setTimeout(function () {
-          loading.classList.add("booking-frame-loading--fallback");
-        }, 4000);
-      }
+  /* ── Top bar: scrolled state + active section ── */
+  function initNav() {
+    var bar = $(".topbar");
+    function onScroll() { if (bar) bar.classList.toggle("is-scrolled", window.scrollY > 8); }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
-      if (shouldScroll && panel.scrollIntoView) {
-        window.setTimeout(function () {
-          panel.scrollIntoView({ block: "start", behavior: "smooth" });
-        }, 0);
-      }
-    }
+    if (!("IntersectionObserver" in window)) return;
+    var links = {};
+    document.querySelectorAll(".nav a").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = links[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(links).forEach(function (k) {
+      var section = document.getElementById(k);
+      if (section) observer.observe(section);
+    });
+  }
 
-    if (frame && frameShell) {
+  /* ── Booking calendar ── */
+  function initBooking() {
+    var toggle = $("#booking-toggle");
+    var panel = $("#booking-panel");
+    var frame = $("#booking-frame");
+    var shell = $(".booking-frame-shell");
+    if (!toggle || !panel) return;
+
+    if (frame && shell) {
       frame.addEventListener("load", function () {
-        window.clearTimeout(fallbackTimer);
-        frameShell.classList.add("is-loaded");
+        if (frame.src) shell.classList.add("is-loaded");
       });
     }
 
-    trigger.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      var isOpen = trigger.getAttribute("aria-expanded") === "true";
-      var nextOpen = !isOpen;
-
-      setBookingPanel(nextOpen, true);
-
-      if (window.history && window.history.replaceState) {
-        var nextUrl = nextOpen ? "#book" : window.location.pathname + window.location.search;
-        window.history.replaceState(null, "", nextUrl);
+    function setOpen(open, scroll) {
+      toggle.setAttribute("aria-expanded", String(open));
+      panel.hidden = !open;
+      if (open && frame && !frame.src && id.bookingEmbed) frame.src = id.bookingEmbed;
+      if (open && scroll) {
+        setTimeout(function () { panel.scrollIntoView({ behavior: "smooth", block: "center" }); }, 50);
       }
+    }
+
+    toggle.addEventListener("click", function () {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true", true);
     });
 
-    if (window.location.hash === "#book") {
-      setBookingPanel(true, true);
+    // Hero CTA and #book deep links open the calendar straight away.
+    document.querySelectorAll("[data-open-booking]").forEach(function (a) {
+      a.addEventListener("click", function () { setOpen(true, false); });
+    });
+    if (location.hash === "#book") {
+      setOpen(true, true);
     }
   }
 
-  function initCaseStudyModal() {
-    var modal = qs("#case-study-modal");
-    if (!modal) return;
+  /* ── Case study dialog ── */
+  function initCaseStudies() {
+    var dialog = $("#case-dialog");
+    if (!dialog || typeof dialog.showModal !== "function") return;
+    var byId = {};
+    (data.projects || []).forEach(function (p, i) { byId[p.id] = { p: p, i: i }; });
 
-    var previousFocus = null;
-    var studies = data.caseStudies || [];
-    var fields = {
-      kicker: qs("#case-modal-kicker"),
-      title: qs("#case-modal-title"),
-      focus: qs("#case-modal-focus"),
-      role: qs("#case-modal-role"),
-      stack: qs("#case-modal-stack"),
-      problem: qs("#case-modal-problem"),
-      build: qs("#case-modal-build"),
-      outcome: qs("#case-modal-outcome")
-    };
+    function set(sel, text) { var el = $(sel, dialog); if (el) el.textContent = text || ""; }
 
-    function setText(el, value) {
-      if (el) el.textContent = value || "";
-    }
-
-    function getStudy(title) {
-      return studies.find(function (study) { return study.title === title; });
-    }
-
-    function openModal(study, trigger) {
-      if (!study) return;
-      previousFocus = trigger || document.activeElement;
-
-      setText(fields.kicker, "Case Study");
-      setText(fields.title, study.title);
-      setText(fields.focus, study.focus);
-      setText(fields.role, study.role);
-      setText(fields.stack, study.stack);
-      setText(fields.problem, study.problem);
-      setText(fields.build, study.build);
-      setText(fields.outcome, study.outcome);
-
-      modal.hidden = false;
-      document.body.classList.add("modal-open");
-
-      var closeButton = modal.querySelector(".case-modal-close");
-      if (closeButton) closeButton.focus();
-    }
-
-    function closeModal() {
-      modal.hidden = true;
-      document.body.classList.remove("modal-open");
-      if (previousFocus && previousFocus.focus) previousFocus.focus();
-    }
-
-    document.querySelectorAll("[data-case-study]").forEach(function (button) {
-      button.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        openModal(getStudy(button.getAttribute("data-case-study")), button);
-      });
+    document.addEventListener("click", function (event) {
+      var trigger = event.target.closest("[data-case]");
+      if (!trigger) return;
+      var entry = byId[trigger.getAttribute("data-case")];
+      if (!entry) return;
+      var p = entry.p;
+      var cs = p.caseStudy || {};
+      set("#case-kicker", "Case study " + pad(entry.i + 1) + " · " + p.kind);
+      set("#case-title", p.title);
+      set("#case-tagline", p.tagline);
+      set("#case-problem", cs.problem);
+      set("#case-build", cs.build);
+      set("#case-role", cs.role);
+      set("#case-outcome", cs.outcome);
+      $("#case-stack", dialog).innerHTML = chips(p.stack);
+      var link = $("#case-link", dialog);
+      if (link) link.href = p.link;
+      dialog.showModal();
+      document.body.classList.add("dialog-open");
     });
 
-    modal.querySelectorAll("[data-case-modal-close]").forEach(function (control) {
-      control.addEventListener("click", closeModal);
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (modal.hidden) return;
-      if (event.key === "Escape") closeModal();
+    dialog.addEventListener("close", function () { document.body.classList.remove("dialog-open"); });
+    // Close when clicking the backdrop.
+    dialog.addEventListener("click", function (event) {
+      if (event.target !== dialog) return;
+      var r = dialog.getBoundingClientRect();
+      var inside = event.clientX >= r.left && event.clientX <= r.right && event.clientY >= r.top && event.clientY <= r.bottom;
+      if (!inside) dialog.close();
     });
   }
 
-  renderNav();
   renderHero();
-  renderCareer();
-  renderEducation();
-  renderCertifications();
-  renderProjects();
-  setYear();
+  renderWork();
+  renderServices();
+  renderProcess();
+  renderAbout();
+  renderContact();
+  initClock();
   initTheme();
-  initBookingPanel();
-  initCaseStudyModal();
+  initNav();
+  initBooking();
+  initCaseStudies();
 })();

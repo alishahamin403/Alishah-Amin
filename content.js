@@ -2,216 +2,219 @@ window.PORTFOLIO_DATA = {
   identity: {
     fullName: "Ali Shah Amin",
     initials: "ASA",
-    title: "Product · Strategy · Builder",
-    bio: "Experienced in big data products and solutions — from data hubs and data lakes to BI reporting. Well-versed in AI tools like Codex and Claude, with backend experience in Supabase and Vercel deployment pipelines.",
+    role: "Product Manager & Builder",
+    location: "Toronto, Canada",
+    timezone: "America/Toronto",
+    availability: "Booking freelance projects for Q4 2026",
     email: "alishah.amin96@gmail.com",
     linkedin: "https://www.linkedin.com/in/alishah-amin/",
-    status: "Contact"
+    github: "https://github.com/alishahamin403",
+    // Add your Upwork profile URL here once it's live and it will appear in the contact section.
+    upwork: null,
+    booking: "https://calendar.app.google/cWuoHbffiUtKMDxv8",
+    bookingEmbed:
+      "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-QIwyBIS52Nqy0kehODS5hDRlxoUhP0y8zCEO8WM0-6vCNgL0VvGItx1afUyUkqWRAIdTCf5L?gv=true"
   },
 
-  skills: [
-    {
-      category: "Product",
-      items: ["Product Strategy", "Roadmapping", "User Research", "OKRs", "PRDs", "Go-to-Market"]
-    },
-    {
-      category: "Operations",
-      items: ["Process Design", "Execution Frameworks", "Cross-functional Leadership", "Delivery Management"]
-    },
-    {
-      category: "Technology",
-      items: ["AI / LLM Workflows", "iOS (Swift)", "Web Development", "Data Analytics"]
-    },
-    {
-      category: "Business",
-      items: ["Growth Strategy", "Stakeholder Management", "P&L Ownership", "Strategic Partnerships"]
-    }
+  stats: [
+    { value: "7+", label: "years leading product & delivery" },
+    { value: "~3k", label: "commits shipping Seline, my iOS app" },
+    { value: "4", label: "products live on the web today" },
+    { value: "1", label: "person from scope to launch, no handoffs" }
   ],
 
-  education: [
-    {
-      school: "Smith School of Business at Queen's University",
-      degree: "Master of Management Analytics (MMA)",
-      period: "2023 — 2024",
-      logo: "https://www.google.com/s2/favicons?domain=queensu.ca&sz=64"
-    },
-    {
-      school: "Toronto Metropolitan University",
-      degree: "BCom, Business Technology Management",
-      period: "2014 — 2018",
-      logo: "https://www.google.com/s2/favicons?domain=torontomu.ca&sz=64"
-    }
+  stack: [
+    "SwiftUI", "Next.js", "Supabase", "TypeScript", "Postgres", "Stripe",
+    "Vercel", "WidgetKit", "Tailwind", "OpenAI", "Gemini", "Claude", "Playwright", "MapKit"
   ],
 
-  certifications: [
+  projects: [
     {
-      name: "Certified ScrumMaster (CSM)",
-      issuer: "Scrum Alliance",
-      issued: "Apr 2021",
-      logo: "https://www.google.com/s2/favicons?domain=scrumalliance.org&sz=64"
-    },
-    {
-      name: "Certified Associate in Project Management (CAPM)®",
-      issuer: "Project Management Institute",
-      issued: "Jul 2019",
-      logo: "https://www.google.com/s2/favicons?domain=pmi.org&sz=64"
-    }
-  ],
-
-  sideProjects: [
-    {
+      id: "seline",
       title: "Seline",
-      type: "iOS App",
-      status: "In Progress",
+      kind: "iOS app",
+      status: "In active development",
+      featured: true,
+      tagline: "Your life, in context.",
       description:
-        "Productivity and life management with an LLM at its core. Manages emails, calendar, visits, receipts, journaling, and notes — all in one place.",
-      link: null
+        "A personal intelligence app for iOS. Email, calendar, receipts, notes, journaling, places and people in one dashboard, with an AI assistant that answers questions from your own data.",
+      stack: ["SwiftUI", "WidgetKit", "Supabase", "Edge Functions", "Gemini", "OpenAI Realtime", "MapKit", "EventKit"],
+      link: "https://seline-website-three.vercel.app/",
+      linkLabel: "seline-website-three.vercel.app",
+      icon: "assets/img/seline-icon.webp",
+      phones: ["seline-menu", "seline-home", "seline-chat"],
+      caseStudy: {
+        problem:
+          "Daily life is spread across a dozen apps: inbox, calendar, banking, receipts, notes. Nothing connects them, so simple questions like “what did I spend on dinners last month?” or “when did I last see Sam?” have no single answer.",
+        build:
+          "Designed and built a native SwiftUI app with a Supabase backend for auth, sync and storage. It integrates Gmail, Google Contacts, Calendar and live location, and includes home-screen widgets, a voice mode on OpenAI Realtime, and grounded AI chat that retrieves answers from the user's own notes, visits, receipts and emails.",
+        role: "Product, UX design and full-stack iOS build",
+        outcome:
+          "Roughly 3,000 commits of iteration so far, with a full design system, performance audits and a marketing site. It's in active development."
+      }
     },
     {
-      title: "Awaz",
-      type: "Website",
-      status: "Active",
-      description:
-        "A quiet place to study the Quran, Torah, Bible, and Bhagavad Gita. Structured, accessible content for readers exploring religious texts.",
-      link: "https://awaz-drab.vercel.app/"
-    },
-    {
+      id: "craft",
       title: "Craft",
-      type: "Website",
-      status: "In Progress",
+      kind: "AI web app",
+      status: "Live",
+      tagline: "Turn images into cinematic video.",
       description:
-        "Image-to-video conversion tool. Transforms static images into dynamic video content using modern AI models.",
-      link: "https://craft-swart-six.vercel.app/"
+        "Upload one product photo, describe the motion, and get a short cinematic video, saved to a private library. Built for fashion sellers creating short-form product content.",
+      stack: ["Next.js", "TypeScript", "Supabase Storage", "Replicate", "fal.ai", "Google OAuth", "Playwright"],
+      link: "https://craft-swart-six.vercel.app/",
+      linkLabel: "craft-swart-six.vercel.app",
+      shots: { light: "assets/img/craft-light.webp", dark: "assets/img/craft-dark.webp" },
+      caseStudy: {
+        problem:
+          "Small fashion brands need video for Reels and TikTok but don't have a studio, an editor or time to learn AI video tools.",
+        build:
+          "Next.js App Router app with Google sign-in on signed HTTP-only sessions, private Supabase Storage for uploads and outputs, and a routing layer that sends each job to the right image-to-video model on Replicate or fal.ai. Covered by Vitest unit tests and Playwright end-to-end tests.",
+        role: "Product, design and full-stack build",
+        outcome: "Live web app that goes from one photo to a finished clip in a few clicks."
+      }
     },
     {
+      id: "awaz",
+      title: "Awaz",
+      kind: "Web platform",
+      status: "Live",
+      tagline: "A quiet place to study scripture.",
+      description:
+        "Read the Quran, Torah, Bible and Bhagavad Gita side by side. Highlight a passage to surface parallels across traditions, save notes, and ask questions in plain language.",
+      stack: ["Next.js", "React 19", "Tailwind 4", "Supabase Auth", "LLM Q&A"],
+      link: "https://awaz-drab.vercel.app/",
+      linkLabel: "awaz-drab.vercel.app",
+      icon: "assets/img/awaz-icon.svg",
+      shots: { light: "assets/img/awaz-light.webp", dark: "assets/img/awaz-dark.webp" },
+      caseStudy: {
+        problem:
+          "People curious about how religious texts relate to each other jump between scattered sites and search results, and lose context every time.",
+        build:
+          "A calm reading environment with original-language text plus English, highlight-to-compare for direct and thematic parallels, saved passages and notes behind Supabase auth, and an “Ask Awaz” assistant that answers and points to the relevant pages.",
+        role: "Product concept, content architecture and full-stack build",
+        outcome: "Live platform for side-by-side comparative study."
+      }
+    },
+    {
+      id: "royalty",
       title: "Royalty Home Inc.",
-      type: "Website",
-      status: "Active",
+      kind: "Marketing site",
+      status: "Live",
+      tagline: "Luxury renovations across the GTA.",
       description:
-        "Toronto's premier renovation studio — full-service luxury renovations across the GTA covering kitchens, bathrooms, and full-home transformations.",
-      link: "https://royalty-home-inc-steel.vercel.app/"
+        "A premium marketing site for a Toronto renovation studio, designed to build trust quickly and turn visitors into quote requests.",
+      stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+      link: "https://royalty-home-inc-steel.vercel.app/",
+      linkLabel: "royalty-home-inc-steel.vercel.app",
+      icon: "assets/img/royalty-logo.webp",
+      shots: { light: "assets/img/royalty.webp", dark: "assets/img/royalty.webp" },
+      caseStudy: {
+        problem:
+          "Renovation clients hire on trust. The studio needed to look as premium as its work and make getting a quote effortless.",
+        build:
+          "A fast, dependency-free static site with editorial typography, full-bleed project imagery, clear service framing and quote CTAs throughout.",
+        role: "Brand presentation, copy and build",
+        outcome: "A lightweight static site with no framework overhead, so it loads fast on mobile."
+      }
     },
     {
+      id: "lockerzero",
       title: "Locker Zero",
-      type: "Website",
-      status: "In Progress",
+      kind: "Landing page",
+      status: "Live",
+      tagline: "Website mockups in 24 hours.",
       description:
-        "Custom jewelry consulting for those who demand perfection. Trusted by NFL athletes and elite clientele for over a decade.",
-      link: "https://locker-zero.vercel.app/"
+        "A landing page for a web design service: send in an idea and get a first designed mockup within a day, followed by the full build.",
+      stack: ["HTML", "CSS", "Light/dark theming", "Vercel"],
+      link: "https://locker-zero.vercel.app/",
+      linkLabel: "locker-zero.vercel.app",
+      icon: "assets/img/locker-zero-logo.svg",
+      shots: { light: "assets/img/lockerzero-light.webp", dark: "assets/img/lockerzero-dark.webp" },
+      caseStudy: {
+        problem:
+          "Founders lose momentum between having an idea and seeing it. Most agencies take weeks to show anything.",
+        build:
+          "A bold editorial landing page with device mockups, a clear process section and a structured brief form that captures everything needed to start designing.",
+        role: "Positioning, design and build",
+        outcome: "Live site that turns a vague idea into a usable brief."
+      }
     }
   ],
 
-  caseStudies: [
+  services: [
     {
-      title: "Seline",
-      focus: "AI life-management app",
-      role: "Product strategy, UX direction, app concept",
-      stack: "SwiftUI, Supabase, LLM workflows, Google integrations",
-      problem:
-        "Personal productivity is scattered across email, calendar, spending, receipts, notes, and daily planning. The goal is to bring those routines into one assistant-led mobile experience.",
-      build:
-        "Designed an iOS-first experience around home, chat, navigation, and task surfaces, with an LLM at the core for asking questions, surfacing context, and helping users act on daily information.",
-      outcome:
-        "In-progress product prototype with a clear mobile interaction model and visual direction."
+      title: "iOS apps",
+      summary: "Native SwiftUI apps, new features, widgets and fixes, taken through TestFlight to the App Store.",
+      items: ["SwiftUI & WidgetKit", "Maps, location & calendar", "Sign in with Google/Apple", "App Store prep"]
     },
     {
-      title: "Awaz",
-      focus: "Religious text study platform",
-      role: "Product concept, web experience, content structure",
-      stack: "Next.js, Vercel, responsive UI system, structured content architecture",
-      problem:
-        "Readers exploring scripture often move between disconnected sources and search results, making it harder to compare context across traditions.",
-      build:
-        "Built a calm study environment for the Quran, Torah, Bible, and Bhagavad Gita with reader, library, and question-led exploration paths.",
-      outcome:
-        "Active web product focused on accessible study and structured discovery."
+      title: "Web apps & sites",
+      summary: "Fast marketing sites, dashboards and SaaS MVPs in Next.js, deployed on Vercel.",
+      items: ["Next.js & React", "Landing pages that convert", "Stripe payments", "Analytics & SEO"]
     },
     {
-      title: "Craft",
-      focus: "AI image-to-video tool",
-      role: "Product strategy, interface direction, workflow design",
-      stack: "Next.js, Vercel, AI generation workflows, media upload pipeline",
-      problem:
-        "Creators need a faster way to turn static images into short cinematic videos without managing complex editing tools or model workflows.",
-      build:
-        "Shaped a web product around upload, creation, and library flows, with a clear hero message and visual before-to-after storytelling.",
-      outcome:
-        "In-progress AI creation tool positioned around fast, high-quality video generation."
+      title: "Supabase backends",
+      summary: "Solid data foundations: schema, auth, row-level security, storage and edge functions.",
+      items: ["Postgres schema design", "Auth & RLS policies", "Storage & file uploads", "Edge functions & cron"]
     },
     {
-      title: "Royalty Home Inc.",
-      focus: "Luxury renovation website",
-      role: "Website strategy, brand presentation, conversion flow",
-      stack: "Next.js, Vercel, responsive web design, brand-led marketing UI",
-      problem:
-        "A renovation studio needs to signal trust, premium quality, and service coverage quickly while guiding potential clients toward inquiry.",
-      build:
-        "Created a polished web presence with luxury renovation positioning, project imagery, service framing, and clear calls to action.",
-      outcome:
-        "In-progress service website for GTA renovation leads and brand credibility."
-    },
-    {
-      title: "Locker Zero",
-      focus: "Custom jewelry consulting website",
-      role: "Brand positioning, landing experience, visual direction",
-      stack: "Next.js, Vercel, custom brand system, luxury landing page design",
-      problem:
-        "High-end jewelry consulting depends on trust, scarcity, taste, and credibility. The website needs to feel premium without overexplaining.",
-      build:
-        "Built a refined landing experience around custom jewelry consulting, NFL athlete trust signals, elite clientele, and consultation-led conversion.",
-      outcome:
-        "In-progress premium website with light and dark presentation for a luxury consulting brand."
+      title: "AI features",
+      summary: "Useful AI features, not demos. Assistants grounded in your data, automations and media generation.",
+      items: ["Chat over your docs & data", "LLM workflows & tools", "Voice (realtime) modes", "Image & video generation"]
     }
+  ],
+
+  process: [
+    { title: "Intro call", text: "A free 30-minute call. We talk about the goal and who it's for, not only the feature list." },
+    { title: "Written scope", text: "A short plan with milestones, a timeline and a fixed quote where possible. No surprises." },
+    { title: "Build in the open", text: "You get live preview links at every milestone and regular updates, so you always know where things stand." },
+    { title: "Handoff", text: "Deployed, documented code in your own repo, plus a walkthrough so your team owns it." }
   ],
 
   career: [
     {
       role: "Senior Product Manager",
       company: "RBC Borealis",
-      period: "Oct 2025 — Present",
-      logo: "https://www.google.com/s2/favicons?domain=rbcborealis.com&sz=64",
-      description:
-        "Leading the Data Hubs product team across strategy, go-to-market, feature enhancement, and user experience. Data Hubs creates user-ready data assets using medallion architecture across both on-prem and cloud environments."
+      period: "2025 — Now",
+      description: "Lead the Data Hubs product team across strategy, go-to-market and UX for enterprise data products on-prem and in the cloud."
     },
     {
       role: "Manager, Delivery & Strategy",
       company: "RBC",
-      period: "Oct 2022 — Oct 2025",
-      logo: "https://www.google.com/s2/favicons?domain=rbc.com&sz=64",
-      description:
-        "Led strategy and delivery for two product teams within the Advanced Analytics program in Personal Banking. Built an end-to-end delivery framework that connected OKRs to individual resource tasks."
+      period: "2022 — 2025",
+      description: "Ran strategy and delivery for two Advanced Analytics product teams. Built the framework linking OKRs to day-to-day work."
     },
     {
       role: "Product Manager, Digital Marketing & Sales",
       company: "RBC",
-      period: "Oct 2021 — Oct 2022",
-      logo: "https://www.google.com/s2/favicons?domain=rbc.com&sz=64",
-      description:
-        "Developed data strategy and go-to-market planning for the OnePATH data product team and DevOps initiatives within RBC Personal Banking's Advanced Analytics program."
+      period: "2021 — 2022",
+      description: "Data strategy and go-to-market for the OnePATH data product and DevOps initiatives in Personal Banking."
     },
     {
       role: "Product Analyst",
       company: "WSIB",
-      period: "Jun 2019 — Oct 2021",
-      logo: "https://www.google.com/s2/favicons?domain=wsib.ca&sz=64",
-      description:
-        "Worked on WSIB's internal Health Services app, centralizing insurance policies and service information so users could find trusted answers in-app instead of searching externally."
+      period: "2019 — 2021",
+      description: "Health Services app that centralized policy and service information, so users could find trusted answers in the app."
     },
     {
       role: "Business Analyst",
       company: "Innovapost",
-      period: "Dec 2018 — May 2019",
-      logo: "https://www.google.com/s2/favicons?domain=innovapost.com&sz=64",
-      description:
-        "Gathered requirements for the Disability Accommodation Program and partnered with the product team to implement the feature on the Canada Post website."
-    },
-    {
-      role: "IT Business Analyst (Internship)",
-      company: "WSIB",
-      period: "May 2018 — Aug 2018",
-      logo: "https://www.google.com/s2/favicons?domain=wsib.ca&sz=64",
-      description:
-        "Supported the SharePoint Sites product team, helping build internal SharePoint sites for business teams across WSIB."
+      period: "2018 — 2019",
+      description: "Requirements for the Disability Accommodation Program on canadapost.ca."
     }
+  ],
+
+  credentials: [
+    { name: "Master of Management Analytics", issuer: "Queen's University, Smith School of Business", year: "2024" },
+    { name: "BCom, Business Technology Management", issuer: "Toronto Metropolitan University", year: "2018" },
+    { name: "Certified ScrumMaster (CSM)", issuer: "Scrum Alliance", year: "2021" },
+    { name: "CAPM", issuer: "Project Management Institute", year: "2019" }
+  ],
+
+  offDuty: [
+    "Gym every day. Strength training keeps my head clear.",
+    "Theo and ThePrimeTime for tech news; Lex Fridman and All-In for long drives.",
+    "A committed local-pizza loyalist. JP's Pizzeria, if you're asking."
   ]
 };
