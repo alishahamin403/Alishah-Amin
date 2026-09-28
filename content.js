@@ -137,25 +137,25 @@ window.PORTFOLIO_DATA = {
       }
     },
     {
-      id: "lockerzero",
-      title: "Locker Zero",
-      kind: "Landing page",
+      id: "anushka",
+      title: "Anushka Closet",
+      kind: "E-commerce store",
       status: "Live",
-      tagline: "Website mockups in 24 hours.",
+      tagline: "Timeless style. Elegant you.",
       description:
-        "A landing page for a web design service: send in an idea and get a first designed mockup within a day, followed by the full build.",
-      stack: ["HTML", "CSS", "Light/dark theming", "Vercel"],
-      link: "https://locker-zero.vercel.app/",
-      linkLabel: "locker-zero.vercel.app",
-      icon: "assets/img/locker-zero-logo.svg",
-      shots: { light: "assets/img/lockerzero-light.webp", dark: "assets/img/lockerzero-dark.webp" },
+        "An online store for a Scarborough boutique selling salwar kameez, sarees, clutches and jewelry. Customers browse by category, pick a size (or custom measurements), check out with Stripe and get a branded order confirmation by email.",
+      stack: ["Next.js 16", "React 19", "TypeScript", "Stripe Checkout", "Stripe webhooks", "Auth.js (Google)", "Resend", "Tailwind 4"],
+      link: "https://anushka-closet.vercel.app/",
+      linkLabel: "anushka-closet.vercel.app",
+      icon: "assets/img/anushka-logo.webp",
+      shots: { light: "assets/img/anushka.webp", dark: "assets/img/anushka.webp" },
       caseStudy: {
         problem:
-          "Founders lose momentum between having an idea and seeing it. Most agencies take weeks to show anything.",
+          "A Scarborough boutique rebranding from Classic Closet to Anushka Closet was sharing new pieces by text and on Facebook. It needed a real storefront where customers could browse, choose sizes and pay online.",
         build:
-          "A bold editorial landing page with device mockups, a clear process section and a structured brief form that captures everything needed to start designing.",
-        role: "Positioning, design and build",
-        outcome: "Live site that turns a vague idea into a usable brief."
+          "A Next.js storefront with category pages, search and filters, stock and “new” badges, a lookbook, a slide-over bag and made-to-order “Custom” sizing with a measurements note. Checkout runs on Stripe, and a Stripe webhook sends a branded order confirmation through Resend. Customers can sign in with Google or check out as a guest. It also includes a branded 404 page, privacy and terms pages, and accessible (WCAG AA) text contrast.",
+        role: "Design, e-commerce build and launch",
+        outcome: "A live store with online payments and automatic order emails, with a mobile layout (slide-in menu, sticky add-to-bag) for customers shopping on their phones."
       }
     }
   ],
