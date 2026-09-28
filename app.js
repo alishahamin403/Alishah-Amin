@@ -64,11 +64,10 @@
     if (p.phones) {
       media =
         '<a class="project-media phones" href="' + esc(p.link) + '" target="_blank" rel="noopener noreferrer" aria-label="Visit the ' + esc(p.title) + ' website">' +
-          p.phones.map(function (name) {
+          p.phones.map(function (shot) {
             return (
               '<div class="phone">' +
-                '<img class="theme-light-img" src="assets/img/' + name + '-light.webp" alt="" width="540" height="1174" loading="lazy" />' +
-                '<img class="theme-dark-img" src="assets/img/' + name + '-dark.webp" alt="" width="540" height="1174" loading="lazy" />' +
+                '<img src="' + esc(shot.src) + '" alt="' + esc(shot.alt) + '" width="540" height="1174" loading="lazy" />' +
               "</div>"
             );
           }).join("") +

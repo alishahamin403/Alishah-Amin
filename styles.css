@@ -609,10 +609,12 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .project-body { padding: 20px 8px 8px; display: flex; flex-direction: column; flex: 1; }
 .project-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 6px 12px;
   color: var(--muted);
 }
+.project-meta > span { white-space: nowrap; }
 .project-num { color: var(--accent); }
 .status {
   margin-left: auto;

@@ -33,24 +33,28 @@ window.PORTFOLIO_DATA = {
       id: "seline",
       title: "Seline",
       kind: "iOS app",
-      status: "In active development",
+      status: "Coming soon to the App Store",
       featured: true,
-      tagline: "Your life, in context.",
+      tagline: "Ask your day anything.",
       description:
-        "A personal intelligence app for iOS. Email, calendar, receipts, notes, journaling, places and people in one dashboard, with an AI assistant that answers questions from your own data.",
-      stack: ["SwiftUI", "WidgetKit", "Supabase", "Edge Functions", "Gemini", "OpenAI Realtime", "MapKit", "EventKit"],
+        "One app for your email, money, places and health. Ask it anything and it answers from what it has already read. Then it handles the busywork: it signs in to pull your bank statements, watches your bills, and logs a meal or a workout from one line.",
+      stack: ["SwiftUI", "Supabase", "Edge Functions", "OpenAI", "Gemini", "WebKit agent", "HealthKit", "MapKit", "WidgetKit", "Vision"],
       link: "https://seline-website-three.vercel.app/",
       linkLabel: "seline-website-three.vercel.app",
       icon: "assets/img/seline-icon.webp",
-      phones: ["seline-menu", "seline-home", "seline-chat"],
+      phones: [
+        { src: "assets/img/seline-needs.webp", alt: "Seline's Needs you feed flagging a bill that went up" },
+        { src: "assets/img/seline-ask.webp", alt: "Seline answering what the user bought on Amazon this month" },
+        { src: "assets/img/seline-places.webp", alt: "Seline suggesting coffee near the office on a map" }
+      ],
       caseStudy: {
         problem:
-          "Daily life is spread across a dozen apps: inbox, calendar, banking, receipts, notes. Nothing connects them, so simple questions like “what did I spend on dinners last month?” or “when did I last see Sam?” have no single answer.",
+          "Daily life is spread across a dozen apps: inbox, bank, bills, calendar, health, notes. Nothing connects them, so simple questions like “where did my money go this month?” or “what was that ramen place with Sam?” have no single answer, and the chores (downloading statements, checking bills) stay manual.",
         build:
-          "Designed and built a native SwiftUI app with a Supabase backend for auth, sync and storage. It integrates Gmail, Google Contacts, Calendar and live location, and includes home-screen widgets, a voice mode on OpenAI Realtime, and grounded AI chat that retrieves answers from the user's own notes, visits, receipts and emails.",
+          "A native SwiftUI app on a Supabase backend, with Edge Functions for Gmail push, scheduled tasks and an AI proxy. It answers from the user's email, money, places and health data using OpenAI and Gemini models. A WebKit browser agent signs in to sites the user names, asks for the 2FA code and fetches statements. Rules like “check my bill 3 days before it's due” run on a schedule. It also includes HealthKit sleep and fitness, automatic place visits, one-line meal and workout logging, receipt scanning with Vision, an auto-written daily journal and home-screen widgets.",
         role: "Product, UX design and full-stack iOS build",
         outcome:
-          "Roughly 3,000 commits of iteration so far, with a full design system, performance audits and a marketing site. It's in active development."
+          "About 3,000 commits in, with a marketing site and launch film. It's coming soon to the App Store and was designed privacy-first: contacts stay on the phone, only the last four digits of account numbers are stored, every action can be undone, and signing out wipes everything."
       }
     },
     {
