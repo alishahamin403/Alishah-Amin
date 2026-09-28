@@ -35,7 +35,10 @@ window.PORTFOLIO_DATA = {
       kind: "iOS app",
       status: "Coming soon to the App Store",
       featured: true,
-      tagline: "Ask your day anything.",
+      // Styled like the Seline website: Seline's colours, Geist type, live app footage and a wall of screens.
+      theme: "seline",
+      tagline: "Ask your day",
+      taglineTail: "anything.",
       description:
         "One app for your email, money, places and health. Ask it anything and it answers from what it has already read. Then it handles the busywork: it signs in to pull your bank statements, watches your bills, and logs a meal or a workout from one line.",
       stack: ["SwiftUI", "Supabase", "Edge Functions", "OpenAI", "Gemini", "WebKit agent", "HealthKit", "MapKit", "WidgetKit", "Vision"],
@@ -44,9 +47,20 @@ window.PORTFOLIO_DATA = {
       icon: "assets/img/seline-icon.webp",
       phones: [
         { src: "assets/img/seline-needs.webp", alt: "Seline's Needs you feed flagging a bill that went up" },
-        { src: "assets/img/seline-ask.webp", alt: "Seline answering what the user bought on Amazon this month" },
+        {
+          src: "assets/img/seline-ask.webp",
+          video: "assets/video/seline-ask.mp4",
+          alt: "Screen recording of Seline answering what the user bought on Amazon this month"
+        },
         { src: "assets/img/seline-places.webp", alt: "Seline suggesting coffee near the office on a map" }
       ],
+      wall: [
+        ["home", "Home with a Needs you card"], ["money", "Spending by category"], ["bank", "Browser agent pulling bank statements"],
+        ["fitness", "Fitness and fuel"], ["journal", "Auto-written daily journal"], ["places-map", "Places map"],
+        ["meal", "Meal logged from one line"], ["needs", "Needs you feed"], ["ramen", "Remembered restaurant visit"],
+        ["workout", "Workout logged from one line"], ["rules", "Rules Seline follows"], ["sleep", "Sleep stages"],
+        ["lease", "Answer from a lease email"], ["home-visit", "Place visit details"], ["bill", "Bill check in the browser"]
+      ].map(function (s) { return { src: "assets/img/seline-wall/" + s[0] + ".webp", alt: s[1] }; }),
       caseStudy: {
         problem:
           "Daily life is spread across a dozen apps: inbox, bank, bills, calendar, health, notes. Nothing connects them, so simple questions like “where did my money go this month?” or “what was that ramen place with Sam?” have no single answer, and the chores (downloading statements, checking bills) stay manual.",

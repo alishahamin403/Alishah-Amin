@@ -65,11 +65,11 @@
       media =
         '<a class="project-media phones" href="' + esc(p.link) + '" target="_blank" rel="noopener noreferrer" aria-label="Visit the ' + esc(p.title) + ' website">' +
           p.phones.map(function (shot) {
-            return (
-              '<div class="phone">' +
-                '<img src="' + esc(shot.src) + '" alt="' + esc(shot.alt) + '" width="540" height="1174" loading="lazy" />' +
-              "</div>"
-            );
+            // A phone can play real app footage; the still doubles as its poster and reduced-motion fallback.
+            var screen = shot.video
+              ? '<video class="phone-video" muted loop playsinline preload="none" poster="' + esc(shot.src) + '" data-src="' + esc(shot.video) + '" aria-label="' + esc(shot.alt) + '"></video>'
+              : '<img src="' + esc(shot.src) + '" alt="' + esc(shot.alt) + '" width="540" height="1174" loading="lazy" />';
+            return '<div class="phone">' + screen + "</div>";
           }).join("") +
         "</a>";
     } else {
@@ -85,8 +85,10 @@
         "</a>";
     }
 
+    var classes = "project scroll-reveal" + (p.featured ? " project--featured" : "") + (p.theme ? " project--" + p.theme : "");
+
     return (
-      '<article class="project scroll-reveal' + (p.featured ? " project--featured" : "") + '">' +
+      '<article class="' + classes + '">' +
         media +
         '<div class="project-body">' +
           '<div class="project-meta mono">' +
@@ -95,7 +97,7 @@
             '<span class="status' + (building ? " status--building" : "") + '">' + esc(p.status) + "</span>" +
           "</div>" +
           '<div class="project-title-row">' + icon + '<h3 class="project-title">' + esc(p.title) + "</h3></div>" +
-          '<p class="project-tagline">' + esc(p.tagline) + "</p>" +
+          '<p class="project-tagline">' + esc(p.tagline) + (p.taglineTail ? ' <span class="tagline-tail">' + esc(p.taglineTail) + "</span>" : "") + "</p>" +
           '<p class="project-desc">' + esc(p.description) + "</p>" +
           '<ul class="chips" aria-label="Tech stack">' + chips(p.stack) + "</ul>" +
           '<div class="project-actions">' +
@@ -103,8 +105,49 @@
             '<button class="link-btn" type="button" data-case="' + esc(p.id) + '">Case study</button>' +
           "</div>" +
         "</div>" +
+        (p.wall ? screenWall(p.wall) : "") +
       "</article>"
     );
+  }
+
+  // Two rows of app screens drifting in opposite directions, like the Seline website.
+  function screenWall(shots) {
+    var half = Math.ceil(shots.length / 2);
+    function row(list, extra) {
+      var imgs = list.map(function (s) {
+        return '<img src="' + esc(s.src) + '" alt="' + esc(s.alt) + '" width="360" height="782" loading="lazy" />';
+      }).join("");
+      // Second copy makes the loop seamless and is hidden from screen readers.
+      return '<div class="wall-row' + extra + '"><div class="wall-set">' + imgs + '</div><div class="wall-set" aria-hidden="true">' + imgs + "</div></div>";
+    }
+    return (
+      '<div class="screen-wall" role="group" aria-label="More screens from the app">' +
+        row(shots.slice(0, half), "") +
+        row(shots.slice(half), " wall-row--reverse") +
+      "</div>"
+    );
+  }
+
+  /* ── Autoplay app footage only while it's on screen ── */
+  function initPhoneVideos() {
+    var videos = document.querySelectorAll(".phone-video");
+    if (!videos.length) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) return; // poster stays as a still
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          if (!v.src) v.src = v.dataset.src;
+          var playing = v.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    videos.forEach(function (v) { observer.observe(v); });
   }
 
   function renderWork() {
@@ -321,7 +364,7 @@
       var cs = p.caseStudy || {};
       set("#case-kicker", "Case study " + pad(entry.i + 1) + " · " + p.kind);
       set("#case-title", p.title);
-      set("#case-tagline", p.tagline);
+      set("#case-tagline", p.tagline + (p.taglineTail ? " " + p.taglineTail : ""));
       set("#case-problem", cs.problem);
       set("#case-build", cs.build);
       set("#case-role", cs.role);
@@ -354,4 +397,5 @@
   initNav();
   initBooking();
   initCaseStudies();
+  initPhoneVideos();
 })();
