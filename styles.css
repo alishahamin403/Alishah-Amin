@@ -1,6 +1,6 @@
 /* ============================================================
    Ali Shah Amin — portfolio
-   Warm paper + ink, one signal-orange accent.
+   Warm paper + ink, with a quiet taupe accent.
    ============================================================ */
 
 :root {
@@ -12,8 +12,8 @@
   --muted: #7a7263;
   --line: rgba(22, 20, 15, 0.12);
   --line-strong: rgba(22, 20, 15, 0.22);
-  --accent: #f0531c;
-  --accent-ink: #ffffff;
+  --accent: #6e675b;
+  --accent-ink: #fbf8f2;
   --accent-soft: color-mix(in oklab, var(--accent) 14%, transparent);
   --shadow: 0 1px 0 rgba(22, 20, 15, 0.04), 0 18px 40px -22px rgba(22, 20, 15, 0.35);
   --grain-opacity: 0.22;
@@ -41,8 +41,8 @@
     --muted: #8c8474;
     --line: rgba(239, 233, 221, 0.1);
     --line-strong: rgba(239, 233, 221, 0.2);
-    --accent: #ff6a33;
-    --accent-ink: #140c07;
+    --accent: #b3ab9d;
+    --accent-ink: #11100e;
     --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 22px 50px -24px rgba(0, 0, 0, 0.8);
     --grain-opacity: 0.2;
     color-scheme: dark;
@@ -58,8 +58,8 @@
   --muted: #8c8474;
   --line: rgba(239, 233, 221, 0.1);
   --line-strong: rgba(239, 233, 221, 0.2);
-  --accent: #ff6a33;
-  --accent-ink: #140c07;
+  --accent: #b3ab9d;
+  --accent-ink: #11100e;
   --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 22px 50px -24px rgba(0, 0, 0, 0.8);
   --grain-opacity: 0.2;
   color-scheme: dark;
@@ -185,8 +185,8 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
 .btn:hover svg { transform: translateX(3px); }
 .btn:active { transform: translateY(0); }
 
-.btn-accent { --btn-bg: var(--accent); --btn-fg: var(--accent-ink); box-shadow: 0 10px 24px -12px var(--accent); }
-.btn-accent:hover { box-shadow: 0 16px 30px -12px var(--accent); }
+.btn-accent { --btn-bg: var(--ink); --btn-fg: var(--bg); box-shadow: 0 10px 24px -14px rgba(22, 20, 15, 0.55); }
+.btn-accent:hover { box-shadow: 0 16px 30px -14px rgba(22, 20, 15, 0.6); }
 .btn-ink { --btn-bg: var(--ink); --btn-fg: var(--bg); }
 .btn-ghost { border-color: var(--line-strong); }
 .btn-ghost:hover { border-color: var(--ink); }
@@ -629,7 +629,7 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
   border-radius: 50%;
   background: #1fb46a;
 }
-.status--building::before { background: #f5a524; }
+.status--building::before { background: var(--muted); }
 
 .project-title-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
 .project-icon {
@@ -1010,9 +1010,10 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; lette
   line-height: 0.9;
   letter-spacing: -0.05em;
 }
-.contact-title em { color: var(--accent); }
+.contact-title em { color: color-mix(in oklab, var(--bg) 55%, var(--ink)); }
 .contact-lede { margin-top: 26px; max-width: 34rem; font-size: 1.15rem; opacity: 0.78; }
 .contact-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.contact .btn-accent { --btn-bg: var(--bg); --btn-fg: var(--ink); box-shadow: none; }
 .contact .btn-ghost { --btn-fg: var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent); }
 .contact .btn-ghost:hover { border-color: var(--bg); }
 #booking-toggle svg { transition: transform 0.3s var(--ease); }

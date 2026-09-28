@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="16" fill="#16140f"/>
   <text x="32" y="40" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="20" font-weight="700" fill="#f3efe6" letter-spacing="1">ASA</text>
-  <circle cx="50" cy="14" r="5" fill="#f0531c"/>
+  <circle cx="50" cy="14" r="5" fill="#a39b8e"/>
 </svg>
